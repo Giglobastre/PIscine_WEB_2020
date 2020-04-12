@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 12 avr. 2020 à 13:31
+-- Généré le :  Dim 12 avr. 2020 à 14:34
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -32,10 +32,14 @@ DROP TABLE IF EXISTS `objets`;
 CREATE TABLE IF NOT EXISTS `objets` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(255) NOT NULL,
-  `Photo1` varchar(255) NOT NULL,
-  `Photo2` varchar(255) NOT NULL,
-  `Photo3` varchar(255) NOT NULL,
-  `Video` varchar(255) NOT NULL,
+  `Photo1_nom` varchar(255) NOT NULL,
+  `Photo1_extension` varchar(255) NOT NULL,
+  `Photo2_nom` varchar(255) NOT NULL,
+  `Photo2_extension` int(11) NOT NULL,
+  `Photo3_nom` varchar(255) NOT NULL,
+  `Photo3_extension` varchar(255) NOT NULL,
+  `Video_nom` varchar(255) NOT NULL,
+  `Video_extension` varchar(255) NOT NULL,
   `Description` varchar(255) NOT NULL,
   `Prix` int(11) NOT NULL,
   `Catégorie` int(11) NOT NULL,
