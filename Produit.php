@@ -41,6 +41,14 @@ body
       background-color: #4CAF50;
       color: white;
     }
+    
+         #footer{
+             background-color: black;
+             color: white;
+             clear: both;
+             text-align: center;
+             padding: 5px;
+        }
 </style>
     </head>
     <body>
@@ -50,14 +58,14 @@ body
         </div>
         
         <div class="topnav">
-          <a href="HomePage.html">Home</a>
-          <a href="news.html">News</a>
-          <a class="active" href="produit.html">Produit</a>
-          <a href="client.html">Client</a>
-          <a href="panier.html">Mon panier</a>
-          <a href="connexion.html">Connexion</a>
-          <a href="contact.html">Contact</a>
-          <a href="about.html">About</a>
+          <a href="HomePage.php">Home</a>
+          <a href="news.php">News</a>
+          <a class="active" href="Produit.php">Produit</a>
+          <a href="client.php">Client</a>
+          <a href="panier.php">Mon panier</a>
+          <a href="connexion.php">Connexion</a>
+          <a href="contact.php">Contact</a>
+          <a href="about.php">About</a>
         </div>       
         
         <div style="padding-left:30px">
@@ -65,19 +73,22 @@ body
         <div id="searchbar">                
         <h1>Que voulez-vous rechercher ?</h1>
             <form action="" class="formulaire">
-               <input class="champ" type="text" placeholder="Entrer votre recherche.."/>
-                <input class="bouton" type="button" value="?" />         
+               <input class="champ" type="text" placeholder="ECEbay Search.."/>
+                <input class="bouton" type="button" value="Rechercher" />         
             </form>
         </div> 
         
           <h2>Catégories de produits</h2>
             <div style="width: 150px; height: 50px; overflow-y: scroll;">
-              <a href="ProduitFerraille.html">Ferraille ou trésors<br /></a>
-              <a href="ProduitMus%C3%A9e.html">Bon pour le musée<br /></a>
-              <a href="ProduitVIP.html">Accessoire VIP<br /></a>
+              <a href="ProduitFerraille.php">Ferraille ou trésors<br /></a>
+              <a href="ProduitMus%C3%A9e.php">Bon pour le musée<br /></a>
+              <a href="ProduitVIP.php">Accessoire VIP<br /></a>
             </div>
             <h2>Objets récements consultés</h2>
         </div>
-        
+        <div id="footer">
+            Copiright &copy; 2020; 
+            Clément Viéville - Hugo Teinturier - Kenny Huber
+        </div>
     </body>
 </html>

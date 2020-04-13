@@ -41,6 +41,13 @@ body
       background-color: #4CAF50;
       color: white;
     }
+         #footer{
+             background-color: black;
+             color: white;
+             clear: both;
+             text-align: center;
+             padding: 5px;
+        }
 </style>
     </head>
     <body>
@@ -50,34 +57,25 @@ body
         </div>
         
         <div class="topnav">
-          <a href="HomePage.html">Home</a>
-          <a href="news.html">News</a>
-          <a class="active" href="produit.html">Produit</a>
-          <a href="client.html">Client</a>
-          <a href="panier.html">Mon panier</a>
-          <a href="connexion.html">Connexion</a>
-          <a href="contact.html">Contact</a>
-          <a href="about.html">About</a>
+          <a href="HomePage.php">Home</a>
+          <a href="news.php">News</a>
+          <a class="active" href="produit.php">Produit</a>
+          <a href="client.php">Client</a>
+          <a href="panier.php">Mon panier</a>
+          <a href="connexion.php">Connexion</a>
+          <a href="Contact.php">Contact</a>
+          <a href="about.php">About</a>
         </div>       
         
         <div style="padding-left:30px">
-
-        <div id="searchbar">                
-        <h1>Que voulez-vous rechercher ?</h1>
-            <form action="" class="formulaire">
-               <input class="champ" type="text" placeholder="Entrer votre recherche.."/>
-                <input class="bouton" type="button" value="?" />         
-            </form>
-        </div> 
-        
-          <h2>Catégories de produits</h2>
-            <div style="width: 150px; height: 50px; overflow-y: scroll;">
-              <a href="ProduitFerraille.html">Ferraille ou trésors<br /></a>
-              <a href="ProduitMus%C3%A9e.html">Bon pour le musée<br /></a>
-              <a href="ProduitVIP.html">Accessoire VIP<br /></a>
-            </div>
+            <h2>Catégories Bon pour le Musée</h2>
+            <img border="0" src="pub3.JPG" alt="" hspace="0">
+      
             <h2>Objets récements consultés</h2>
         </div>
-        
+        <div id="footer">
+            Copiright &copy; 2020; 
+            Clément Viéville - Hugo Teinturier - Kenny Huber
+        </div>
     </body>
 </html>
