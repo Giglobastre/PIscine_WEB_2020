@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 13 avr. 2020 à 12:57
+-- Généré le :  Dim 12 avr. 2020 à 14:34
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -32,29 +32,21 @@ DROP TABLE IF EXISTS `objets`;
 CREATE TABLE IF NOT EXISTS `objets` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(255) NOT NULL,
-  `Photo1_nom` varchar(255) DEFAULT NULL,
-  `Photo1_extension` varchar(255) DEFAULT NULL,
-  `Photo2_nom` varchar(255) DEFAULT NULL,
-  `Photo2_extension` varchar(255) DEFAULT NULL,
-  `Photo3_nom` varchar(255) DEFAULT NULL,
-  `Photo3_extension` varchar(255) DEFAULT NULL,
-  `Video_nom` varchar(255) DEFAULT NULL,
-  `Video_extension` varchar(255) DEFAULT NULL,
+  `Photo1_nom` varchar(255) NOT NULL,
+  `Photo1_extension` varchar(255) NOT NULL,
+  `Photo2_nom` varchar(255) NOT NULL,
+  `Photo2_extension` int(11) NOT NULL,
+  `Photo3_nom` varchar(255) NOT NULL,
+  `Photo3_extension` varchar(255) NOT NULL,
+  `Video_nom` varchar(255) NOT NULL,
+  `Video_extension` varchar(255) NOT NULL,
   `Description` varchar(255) NOT NULL,
   `Prix` int(11) NOT NULL,
   `Catégorie` int(11) NOT NULL,
-  `Date_obj` datetime NOT NULL DEFAULT current_timestamp(),
+  `Date` datetime NOT NULL DEFAULT current_timestamp(),
   `ID_V` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `objets`
---
-
-INSERT INTO `objets` (`ID`, `Nom`, `Photo1_nom`, `Photo1_extension`, `Photo2_nom`, `Photo2_extension`, `Photo3_nom`, `Photo3_extension`, `Video_nom`, `Video_extension`, `Description`, `Prix`, `Catégorie`, `Date_obj`, `ID_V`) VALUES
-(1, 'test1', 'obj1img1', 'jpg', 'obj1img2', 'jpg', 'obj1img3', 'jpg', 'g', 'g', 'quijdhzbiuzjf ikzsejrkcniozenfcz zenzcezc cn,cenj ieienfe dijeiuchneunc ieijcei', 14, 41, '2020-04-12 16:53:53', 1),
-(2, 'test2', 'obj2img1', 'jpg', 'obj2img1', 'jpg', 'obj2img1', 'jpg', NULL, NULL, 'vf', 1, 1, '2020-04-12 16:55:34', 2);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

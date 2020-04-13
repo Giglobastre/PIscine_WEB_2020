@@ -1,27 +1,19 @@
 
+#header{
+  background-color: white;
+  color: right;
+  text-align: center;
+  padding: 5px;
+}
 body 
 {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-img{
-  width: 10%;
-  height: 10%;
-  min-height: 120px;
-  min-width: 120px;
-}
-
 .topnav {
   overflow: hidden;
   background-color: #333;
-}
-
-#header{
-  background-color: white;
-  color: right;
-  text-align: center;
-  padding: 5px;
 }
 
 .topnav a {
@@ -42,28 +34,22 @@ img{
   background-color: #4CAF50;
   color: white;
 }
-
 #footer{
  background-color: black;
  color: white;
  clear: both;
  text-align: center;
  padding: 5px;
-} 
+}   
 
-#derniersobj{
-  display: flex;
-  flex-direction: row;
+#menu{
+  float:left;
 }
 
-#Description{
-  font-size: 0.8em;
-  width: 10%;
-  min-width: 120px;
+#connexion{
+  float:right;
 }
 
-#objet{
-
-  display: flex;
-  flex-direction: column;
+#recents{
+   padding-left:30px;
 }
