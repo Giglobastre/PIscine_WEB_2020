@@ -63,41 +63,55 @@
         
         <div class="topnav">
             <div style="float:left">
-          <a class="active" href="HomePage.html">Home</a>
-          <a href="news.html">News</a>
-          <a href="produit.html">Produit</a>
-          <a href="client.html">Client</a>
-          <a href="panier.html">Mon panier</a>
-          <a href="contact.html">Contact</a>
-          <a href="about.html">About</a>
+          <a class="active" href="HomePage.php">Home</a>
+          <a href="news.php">News</a>
+          <a href="Produit.php">Produit</a>
+          <a href="client.php">Client</a>
+          <a href="Contact.php">Contact</a>
+          <a href="about.php">About</a>
          </div>
             <div style="float:right">
-              <a href="connexion.html"><img height="27" src="ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+              <a href="connexion.php"><img height="27" src="ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+              <a href="panier.php"><img height="27" src="Panier.png" alt="" hspace="0"></a>
             </div>     
         </div>       
                
         <div style="padding-left:30px">
             <div id="searchbar">                
-            <h1>Que voulez-vous rechercher ?</h1>
+            <h2>Que voulez-vous rechercher ?</h2>
                 <form action="" class="formulaire">
-                   <input class="champ" type="text" placeholder="Entrer votre recherche.."/>
-                    <input class="bouton" type="button" value="?" />         
+                   <input class="champ" type="text" placeholder="ECEbay Search.."/>
+                    <input class="bouton" type="button" value="Rechercher" />         
                 </form>
             </div>
         </div>
         <div>
             <marquee align="center" height="600" scrolldelay="15" scrollamount="15" onmouseout="this.start()" onmouseover="this.stop()"> 
-                <p>
-                    <a href="ProduitFerraille.html"><img border="0" src="pub2.JPG" alt="" hspace="0"></a>
-                    <a href="ProduitVIP.html"><img border="0" src="pub1.JPG" alt="" hspace="0"></a>
-                    <a href="ProduitMus%C3%A9e.html"><img border="0" src="pub3.JPG" alt="" hspace="0"></a>
+                <p>  
+                    <a href="ProduitFerraille.php"><img border="0" src="pub2.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitVIP.php"><img border="0" src="pub1.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitMus%C3%A9e.php"><img border="0" src="pub3.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitFerraille.php"><img border="0" src="pub2.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitVIP.php"><img border="0" src="pub1.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitMus%C3%A9e.php"><img border="0" src="pub3.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitFerraille.php"><img border="0" src="pub2.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitVIP.php"><img border="0" src="pub1.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitMus%C3%A9e.php"><img border="0" src="pub3.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitFerraille.php"><img border="0" src="pub2.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitVIP.php"><img border="0" src="pub1.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitMus%C3%A9e.php"><img border="0" src="pub3.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitFerraille.php"><img border="0" src="pub2.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitVIP.php"><img border="0" src="pub1.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitMus%C3%A9e.php"><img border="0" src="pub3.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitFerraille.php"><img border="0" src="pub2.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitVIP.php"><img border="0" src="pub1.JPG" alt="" hspace="0"></a>
+                    <a href="ProduitMus%C3%A9e.php"><img border="0" src="pub3.JPG" alt="" hspace="0"></a>              
                 </p>
             </marquee>
         </div>
         <div style="padding-left:30px">
             <h2>Objets récements consultés</h2>
-            
-            
+                    
             
             
         </div>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ebay ECE</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+</head>
+
+<body>
+    <h2 style="text-align: center;">Ebay ECE</h2>
+    <table class="table">
+        <thead>
+            <tr class="primary">
+                <th>Nom</th>
+                <th>Origin</th>
+                <th>Prix</th>
+                <th>Unité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="success">
+                <td>Fraise</td>
+                <td>France</td>
+                <td>2,50€</td>
+                <td>les 500 grammes</td>
+            </tr>
+            <tr class="danger">
+                <td>Figue</td>
+                <td>Espagne</td>
+                <td>1,50€</td>
+                <td>les 100 grammes</td>
+            </tr>
+
+            <tr class="warning">
+                <td>Myrtille</td>
+                <td>Republic czech</td>
+                <td>1,25€</td>
+                <td>les 100 grammes</td>
+            </tr>
+
+            <tr class="info">
+                <td>Broccolli</td>
+                <td>France</td>
+                <td>1,98€</td>
+                <td>le kilogramme</td>
+            </tr>
+
+            <tr class="primary">
+                <td>Patate</td>
+                <td>Espagne</td>
+                <td>1,45€</td>
+                <td>le kilogramme</td>
+            </tr>
+
+            <tr class="warning">
+                <td>Aubergine</td>
+                <td>Italie</td>
+                <td>2,30€</td>
+                <td>le kilogramme</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        <p> Cliquez sur les images pour les agrandir. </ p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="fruit1.jpg" target="_blank">
+                            <img src="fruit1.jpg" alt="Lights" style="width:100%">
+                            <div class="caption">
+                                <p>Pour votre santé, manger au moins 5 fruits et legumes par jour.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="fruit2.jpg" target="_blank">
+                            <img src="fruit2.jpg" alt="Nature" style="width:100%">
+                            <div class="caption">
+                                <p>Pour votre santé, manger au moins 5fruits et legumes par jour.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="fruit3.jpg" target="_blank"> <img src="fruit3.jpg" alt="Fjords" style="width:100%">
+                            <div class="caption">
+                                <p>Pour votre santé, manger au moins 5 fruits et legumes par jour.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="legume1.jpg" target="_blank">
+                            <img src="legume1.jpg" alt="Lights" style="width:100%">
+                            <div class="caption">
+                                <p>Pour votre santé, manger au moins 5 fruits et legumes par jour.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="legume2.jpg" target="_blank">
+                            <img src="legume2.jpg" alt="Nature" style="width:100%">
+                            <div class="caption">
+                                <p>Pour votre santé, manger au moins 5 fruits et legumes par jour.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a href="legume3.jpg" target="_blank"> <img src="legume3.jpg" alt="Fjords" style="width:100%">
+                            <div class="caption">
+                                <p>Pour votre santé, manger au moins 5 fruits et legumes par jour.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+</body>
+
+</html>
