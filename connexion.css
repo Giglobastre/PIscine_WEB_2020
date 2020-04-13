@@ -1,14 +1,57 @@
-
-.centre 
+#header{
+    background-color: white;
+    color: right;
+    text-align: center;
+    padding: 5px;
+}
+.form
 {
-    position:absolute;
-    background-color: grey;
-    border: 10px;
-    border-color: black;
-    left: 50%;
-    top: 50%;
-    width: 200px;
-    height: 200px;
-    margin-left: -100px; /* Cette valeur doit être la moitié négative de la valeur du width */
-    margin-top: -100px; /* Cette valeur doit être la moitié négative de la valeur du height */
+	background-color: grey
+	padding:20px;
+	border: 2px; 
+}
+.alerte
+{
+	color:#B93215;
+}
+
+.col
+{
+	background: grey
+}
+body 
+    {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd; 
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+ #footer{
+     background-color: black;
+     color: white;
+     clear: both;
+     text-align: center;
+     padding: 5px;
 }
