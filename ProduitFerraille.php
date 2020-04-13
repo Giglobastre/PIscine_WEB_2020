@@ -9,47 +9,6 @@
     <link rel="icon" type="image/jpg" href="logo%20Ebay%20ECE.JPG" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-    
-<style>
-    
-body 
-    {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
-
-    .topnav a {
-      float: left;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
-
-    .topnav a:hover {
-      background-color: #ddd; 
-      color: black;
-    }
-
-    .topnav a.active {
-      background-color: #4CAF50;
-      color: white;
-    }
-    
-         #footer{
-             background-color: black;
-             color: white;
-             clear: both;
-             text-align: center;
-             padding: 5px;
-        }
-</style>
     </head>
     <body>
         
@@ -58,11 +17,11 @@ body
         </div>
         
         <div class="topnav">
-          <a href="HomePage.php">Home</a>
+          <a href="index.php">Home</a>
           <a href="news.php">News</a>
           <a class="active" href="produit.php">Produit</a>
           <a href="client.php">Client</a>
-          <a href="panier.php">Mon panier</a>
+          <a href="Panier.php">Mon panier</a>
           <a href="connexion.php">Connexion</a>
           <a href="contact.php">Contact</a>
           <a href="about.php">About</a>
