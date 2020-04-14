@@ -6,26 +6,29 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="icon" type="image/jpg" href="logo%20Ebay%20ECE.JPG" />
+    <link rel="icon" type="image/jpg" href="../Images/logo%20Ebay%20ECE.JPG" />
+    <link rel="stylesheet" type="text/css" href="../Style/Style_produit.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
     </head>
     <body>
-        
-        <div id=logo>
-          <img src="logo%20Ebay%20ECE.JPG" height="50" width="220"> 
-        </div>
-        
-        <div class="topnav">
-          <a href="index.php">Home</a>
-          <a href="news.php">News</a>
-          <a class="active" href="produit.php">Produit</a>
-          <a href="client.php">Client</a>
-          <a href="panier.php">Mon panier</a>
-          <a href="connexion.php">Connexion</a>
-          <a href="contact.php">Contact</a>
-          <a href="about.php">About</a>
-        </div>       
+  <div id="header">
+    <img src="../Images/logo%20Ebay%20ECE.JPG" height="40" width="160"> 
+  </div>
+  
+  <div class="topnav">
+    <div style="float:left">
+      <a href="index.php">Home</a>
+      <a href="news.php">News</a>
+      <a class="active" href="Produit.php">Produit</a>
+      <a href="Contact.php">Contact</a>
+      <a href="about.php">About</a>
+    </div>
+    <div style="float:right">
+      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+      <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
+    </div>     
+  </div>    
         
         <div style="padding-left:30px">
             <h2>Catégories Ferraille ou trésors</h2>
