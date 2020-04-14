@@ -84,8 +84,6 @@
   ?></div><?php
   $req->closeCursor();
   ?>
-</body>
-</html>
 
 </div>
 
