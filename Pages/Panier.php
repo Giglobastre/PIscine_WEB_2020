@@ -18,17 +18,16 @@
   </div>
   
   <div class="topnav">
-    <div id="menu">
+    <div style="float:left">
       <a href="index.php">Home</a>
       <a href="news.php">News</a>
       <a href="Produit.php">Produit</a>
-      <a href="client.php">Client</a>
       <a href="Contact.php">Contact</a>
       <a href="about.php">About</a>
     </div>
-    <div id="connexion">
-      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg"></a>
-      <a class="active" href="panier.php"><img height="27" src="../Images/PanierVert.PNG"></a>
+    <div style="float:right">
+      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+      <a class="active" href="Panier.php"><img height="27" src="../Images/PanierVert.PNG" alt="" hspace="0"></a>
     </div>     
   </div>   
     

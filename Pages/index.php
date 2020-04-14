@@ -21,7 +21,6 @@
       <a class="active" href="index.php">Home</a>
       <a href="news.php">News</a>
       <a href="Produit.php">Produit</a>
-      <a href="client.php">Client</a>
       <a href="Contact.php">Contact</a>
       <a href="about.php">About</a>
     </div>
@@ -67,6 +66,7 @@
     </p>
   </marquee>
 </div>
+    
 <div style="padding-left:30px">
   <h2>Objets récements consultés</h2>
   
