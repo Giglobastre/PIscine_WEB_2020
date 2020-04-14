@@ -4,21 +4,7 @@
     text-align: center;
     padding: 5px;
 }
-.form
-{
-	background-color: grey
-	padding:20px;
-	border: 2px; 
-}
-.alerte
-{
-	color:#B93215;
-}
 
-.col
-{
-	background: grey
-}
 
 body 
     {
@@ -49,6 +35,7 @@ body
       background-color: #4CAF50;
       color: white;
     }
+
 #footer{
      background-color: black;
      color: white;
