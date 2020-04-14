@@ -20,11 +20,11 @@
         
         <div class="topnav">
             <div style="float:left">
-          <a class="active" href="index.html">Home</a>
+          <a class="active" href="HomePage.html">Home</a>
           <a href="news.html">News</a>
           <a href="produit.html">Produit</a>
           <a href="client.html">Client</a>
-          <a href="Panier.html">Mon panier</a>
+          <a href="panier.html">Mon panier</a>
           <a href="contact.html">Contact</a>
           <a href="about.html">About</a>
          </div>

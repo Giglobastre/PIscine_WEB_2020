@@ -7,7 +7,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="icon" type="image/jpg" href="logo%20Ebay%20ECE.JPG" />
+      <link rel="icon" type="image/jpg" href="../Images/logo%20Ebay%20ECE.JPG"/>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
       <link rel="stylesheet" type="text/css" href="../Style/Style_connexion.css" />

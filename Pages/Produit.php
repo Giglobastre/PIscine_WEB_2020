@@ -6,14 +6,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="icon" type="image/jpg" href="logo%20Ebay%20ECE.JPG" />
+  <link rel="icon" type="image/jpg" href="../Images/logo%20Ebay%20ECE.JPG" />
   <link rel="stylesheet" type="text/css" href="../Style/Style_produit.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 </head>
 <body>
   
-  <div id="header">
+  <div id=logo>
     <img src="../Images/logo%20Ebay%20ECE.JPG" height="40" width="160"> 
   </div>
   
@@ -29,7 +29,7 @@
       <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
       <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
     </div>     
-  </div>         
+  </div>       
   
   <div style="padding-left:30px">
 
