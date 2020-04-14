@@ -1,0 +1,23 @@
+#derniersobj{
+	display: flex;
+	flex-direction: row;
+}
+
+#Description{
+	font-size: 0.8em;
+	width: 10%;
+	min-width: 120px;
+}
+
+#objet{
+
+	display: flex;
+	flex-direction: column;
+}
+
+img{
+	width: 10%;
+	height: 10%;
+	min-height: 120px;
+	min-width: 120px;
+}
