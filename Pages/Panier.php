@@ -27,17 +27,12 @@
       <a href="about.php">About</a>
     </div>
     <div id="connexion">
-      <a href="connexion.php"><img height="27" src="ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
-      <a  class="active" href="panier.php"><img height="27" src="Panier.png" alt="" hspace="0"></a>
+      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg"></a>
+      <a class="active" href="panier.php"><img height="27" src="../Images/PanierVert.PNG"></a>
     </div>     
-  </div>     
-  <div id="recents">
-    <h2>Objets récements consultés</h2>
+  </div>   
     
-    
-    
-  </div>
-
+<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
   <div id="footer">
     Copiright &copy; 2020; 
     Clément Viéville - Hugo Teinturier - Kenny Huber
