@@ -32,7 +32,7 @@
         
         <div style="padding-left:30px">
             <h2>Catégories Ferraille ou trésors</h2>
-            <img border="0" src="pub2.JPG" alt="" hspace="0">
+            <img border="0" src="../Images/pub2.JPG" alt="" hspace="0">
         
             <h2>Objets récements consultés</h2>
         </div>

@@ -33,7 +33,7 @@
 
   <div style="padding-left:30px">
     <h2>Catégories Bon pour le Musée</h2>
-    <img border="0" src="pub3.JPG" alt="" hspace="0">
+    <img border="0" src="../Images/pub3.JPG" alt="" hspace="0">
 
     <h2>Objets récements consultés</h2>
   </div>

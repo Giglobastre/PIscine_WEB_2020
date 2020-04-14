@@ -23,11 +23,11 @@
   <div class="topnav">
     <div style="float:left">
       <a href="index.php">Home</a>
-      <a href="news.php">News</a>
-      <a href="Produit.php">Produit</a>
-      <a href="client.php">Client</a>
+      <a href="AchatsPrécedents.php">Achats Précedents</a>
+      <a href="Favoris.php">Favoris</a>
       <a href="Contact.php">Contact</a>
       <a href="about.php">About</a>
+      <a href="Paramètres.php">Paramètres</a>
     </div>
     <div style="float:right">
       <a class="active" href="connexion.php"><img height="27" src="../Images/imgAccountVerte.JPG" alt="" hspace="0"></a>

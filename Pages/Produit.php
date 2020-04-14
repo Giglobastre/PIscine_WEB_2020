@@ -41,12 +41,14 @@
      </form>
    </div> 
    
+      <center>
    <h2>Catégories de produits</h2>
    <div style="width: 150px; height: 50px; overflow-y: scroll;">
     <a href="ProduitFerraille.php">Ferraille ou trésors<br /></a>
     <a href="ProduitMus%C3%A9e.php">Bon pour le musée<br /></a>
     <a href="ProduitVIP.php">Accessoire VIP<br /></a>
   </div>
+          </center>
   <h2>Objets récements consultés</h2>
 </div>
 <div id="footer">
