@@ -91,7 +91,7 @@ while ($data = $req->fetch()){
       ?><form>
         <input type="hidden" name="ID_obj" value="<?php echo $data['ID'];?>">
         <input type="hidden" name="ID_ach" value="<?php echo $_SESSION['ID'];?>">
-        <input type="text" name="prix"><label for="prix">Proposez un prix : </label>
+        <label for="prix">Proposez un prix : </label><input type="text" name="prix">
         <input type="submit" name="submit" Value="Proposer">
         </form><?php
     }
