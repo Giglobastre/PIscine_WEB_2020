@@ -1,0 +1,10 @@
+.cadre{
+	border: 1px solid white;
+	width: 20%;
+	padding: 1%;
+}
+
+body{
+	background-color: rgb(40,41,35);
+	color: white;
+}
