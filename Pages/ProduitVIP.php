@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -33,7 +36,7 @@
   
   <div style="padding-left:30px">
     <h2>Catégories Accessoires VIP</h2>
-    <img border="0" src="pub1.JPG" alt="" hspace="0">
+    <img border="0" src="../Images/pub1.JPG" alt="" hspace="0">
     
     <h2>Objets récements consultés</h2>
       

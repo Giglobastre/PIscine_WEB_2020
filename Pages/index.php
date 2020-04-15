@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +74,6 @@
   <h2>Objets récements consultés</h2>
   
   <?php
-
   try{
     $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
   }
@@ -101,7 +103,7 @@
 </div>
 
 <div id="footer">
-  Copiright &copy; 2020; 
+  Copyright &copy; 2020; 
   Clément Viéville - Hugo Teinturier - Kenny Huber
 </div>
 </body>

@@ -7,6 +7,7 @@ $prenom=$_POST['prenom'];
 $mdp=$_POST['mdp'];
 $mdp2=$_POST['mdp2'];
 $_SESSION['pseudo']=$_POST['pseudo'];
+$_SESSION['type']=$_POST['type'];
 
 $condition=0;
 
@@ -24,7 +25,7 @@ try{
 
 
 		while ($data = $req->fetch()){
-			header('Location: http://localhost/site/Piscine/creationMAIL.php');
+			header('Location: ../Pages/creationMAIL.php');
 			$condition=1;
 
 
@@ -32,22 +33,23 @@ try{
 
 		if($condition==0 && $mdp==$mdp2)
 		{
-			$req = $bdd->prepare('INSERT INTO utilisateurs(Nom,Prenom,Pseudo,Mail,MDP) VALUES(?,?,?,?,?)');
-			$req->execute(array($nom,$prenom,$_SESSION['pseudo'],$mail,$mdp));
+			$req = $bdd->prepare('INSERT INTO utilisateurs(Nom,Prenom,Pseudo,Mail,MDP,Type) VALUES(?,?,?,?,?,?)');
+			$req->execute(array($nom,$prenom,$_SESSION['pseudo'],$mail,$mdp,$_SESSION['type']));
 			$req->closeCursor();
 			$req = $bdd->prepare("SELECT ID FROM utilisateurs WHERE Mail='".$mail."'"); 
 			$req->execute();
 			while ($data = $req->fetch()){
 					$_SESSION['ID']=$data['ID'];
 			}
+			echo $_SESSION['type'];
+			echo $_SESSION['ID'];
 
-
-			header('Location: http://localhost/sites/piscineweb2020_V1/Pages/index.php');
+			/*header('Location: http://localhost/site.php');*/
 		}
 		elseif($condition==0)
 		{
 
-			header('Location: http://localhost/site/Piscine/creationMDP.php');
+			header('Location: ../Pages/creationMDP.php');
 			
 			/*header('Location: http://localhost/site/Piscine/');*/
 			/*exit();*/
@@ -59,7 +61,7 @@ try{
 	}
 	else
 	{
-		header('Location: http://localhost/site/Piscine/creationVIDE.php');
+		header('Location: ../Pages/creationVIDE.php');
 	}
 	
 	$condition=0;
