@@ -1,6 +1,39 @@
-<!DOCTYPE html>
-<html>
+<?php
+if(isset($_POST['mailform']))
+{
+	if(!empty($_POST['nom']) AND !empty($_POST['mail']) AND !empty($_POST['message']))
+	{
+		$header="MIME-Version: 1.0\r\n";
+        $header.='From: "ECEbay F.A.Q."<support@gmail.com>'."\n";
+		$header.='Content-Type:text/html; charset="uft-8"'."\n";
+		$header.='Content-Transfer-Encoding: 8bit';
 
+		$message='
+		<html>
+			<body>
+				<div align="center">
+					<br />
+					<u>Nom de l\'expéditeur :</u>'.$_POST['nom'].'<br />
+					<u>Mail de l\'expéditeur :</u>'.$_POST['mail'].'<br />
+					<br />
+					'.nl2br($_POST['message']).'
+					<br />
+				</div>
+			</body>
+		</html>
+		';
+
+		mail("vieville.clement0@gmail.com", "ECEbay F.A.Q.", $message, $header);
+		$msg="Votre message a bien été envoyé !";
+	}
+	else
+	{
+		$msg="Tous les champs doivent être complétés !";
+	}
+}
+?>
+<html>
+    
 <head>
   <meta charset="utf-8">
 
@@ -11,9 +44,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 </head>
-
-<body class="col">
-    
   <div id="header">
     <img src="../Images/logo%20Ebay%20ECE.JPG" height="40" width="160"> 
   </div>
@@ -31,37 +61,31 @@
       <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
     </div>     
   </div>     
+     <br> <br><br>  <br>
 
-<br> <br> <br> 
+	<body class="col">
+		<form method="POST" action="">
+            <div style="center">
+			<input type="text" name="nom" placeholder="Votre nom" value="<?php if(isset($_POST['nom'])) { echo $_POST['nom']; } ?>" /><br /><br />
+			<input type="email" name="mail" placeholder="Votre email" value="<?php if(isset($_POST['mail'])) { echo $_POST['mail']; } ?>" /><br /><br />
+			<textarea name="message" placeholder="Votre message"><?php if(isset($_POST['message'])) { echo $_POST['message']; } ?></textarea><br /><br />
+			<input type="submit" value="Envoyer" name="mailform"/>
+            <input type="reset" value="Reset" />
+            </div> 
 
-    <form id="myform" class="cssform" action="">
+            </form>
+            <?php
+            if(isset($msg))
+            {
+                echo $msg;
+            }
+            ?>
+    <br> <br><br> <br> <br><br> <br> <br><br><br> <br><br> <br> <br><br> <br> <br><br> <br> <br> 
 
-	<p><label for="user">Nom :</label>
-	<input type="text" id="user" value="" /></p>
-
-	<p><label for="emailaddress">Email :</label>
-	<input type="text" id="emailaddress" value="" /></p>
-
-	<p><label for="comments">Message :</label>
-	<textarea id="comments" rows="5" cols="25"></textarea></p>
-
-	<p><label for="terms">Conditions g&eacute;n&eacute;rales accept&eacute;es</label>
-	<input type="checkbox" id="terms" class="boxes" /></p>
-
-	<p><div style="center">
-		<input type="submit" value="Envoyer" />
-		<input type="reset" value="Reset" />
-	</div>
-        </p>
-    </form>
-
-      <br>
-      <br>
-      <br>
   <div id="footer">
-    Copiright &copy; 2020; 
+    Copyright &copy; 2020; 
     Clément Viéville - Hugo Teinturier - Kenny Huber
   </div>
-
-</body>
+        
+	</body>
 </html>

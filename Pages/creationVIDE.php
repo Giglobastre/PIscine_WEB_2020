@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,9 +13,6 @@
 </head>
 
 <body class="col">
-
-
-
 
     <div id="header">
       <img src="logo.JFIF" height="50" width="220"> 

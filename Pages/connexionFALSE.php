@@ -40,45 +40,33 @@
 
 <br> <br> <br> 
 
-        
-    <form action="../Traitement/Traitement_connexion.php" method="POST">   
-        
-        <div style="padding-left:250px">
+    <center >
+
+    <form class="centre"action="../Traitement/Traitement_connexion.php" method="POST">
         <table>
-            <tr><h2><b>Connexion</b></h2></tr>
-            <tr>
-            <td><input type="email" name="mail" placeholder="Entrez votre Addresse mail "></td>
-            <td><input type="email" name="mail2" placeholder="Entrez votre Addresse mail "></td 
-            </tr>
-            
-            <tr>
-                
-            <td><input type="text" name="mdp" placeholder="Entrez votre Mot de Passe ">  </td>
-                
-            </tr>
-            
-            <tr>
-                
-            <td><input type="submit" name="button1" value="submit"></td>
-  
-                
-            </tr>
-                     
-            <br><br>
-        </table>
+          <div class="alerte">
+              <p style="color:#FF0000";>L'é-mail ou le mot de passe sont incorrects.</p>
             </div>
-    </form>  
-        
-        
-        
-        
-    
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    
+
+        <tr>
+            <td><input type="email" name="mail" placeholder="Entrez votre Addresse mail "></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="mdp" placeholder="Entrez votre Mot de Passe "></td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="button1" value="submit"></td>
+        </tr>
+    </table>
+
+    </form>
+            <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
     <div id="footer">
       Copyright &copy; 2020; 
       Clément Viéville - Hugo Teinturier - Kenny Huber
     </div>
-        
 </body>
 </html>
