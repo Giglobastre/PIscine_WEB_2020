@@ -32,7 +32,7 @@
       if(isset($_SESSION['ID'])){
         ?>
           <form method="post" action="../Traitement/Traitement_deco.php">
-            <input type="submit" value="Deconnexion">
+            <input type="submit" value="Déconnexion">
           </form>
         <?php
       }
@@ -62,16 +62,16 @@
       <?php
       if(isset($_SESSION['ID']) && $_SESSION['type']==0 && $_SESSION['admin']==0){//ach
         ?>
-          <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+          <a href="Profil_Acheteur.php"><p>Mon compte</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
           <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
         <?php
       }else if(isset($_SESSION['ID']) && $_SESSION['type']==1&& $_SESSION['admin']==0){//Vendeur
         ?>
-          <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+          <a href="Profil_Acheteur.php"><p>Mon compte</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
           <?php
       }if(isset($_SESSION['ID']) && $_SESSION['admin']==1){//admin
         ?>
-          <a href="Profil_Admin.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+          <a href="Profil_Admin.php"><p>Mon compte</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
           <?php
       }if(!isset($_SESSION['ID'])){
         ?>
