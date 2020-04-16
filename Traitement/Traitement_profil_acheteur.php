@@ -108,8 +108,8 @@ session_start();
 			$req2->closeCursor();
 			header('location: ../Pages/Profil_acheteur.php');
 		}else if($flag==1){
-			$req2 = $bdd->prepare('UPDATE cb_client(ID_client,Prenom,Nom,Date_expi,CVV,Numero, Type) VALUES(?,?,?,?,?,?,?)');
-			$req2->execute(array($_SESSION['ID'],$_POST['cb_prenom'],$_POST['cb_nom'],$_POST['cb_date'],$_POST['cb_cvv'],$_POST['cb_n'],$_POST['type']));
+			$req2 = $bdd->prepare("UPDATE cb_client SET ID_client='".$_SESSION['ID']."',Prenom='".$_POST['cb_prenom']."',Nom='".$_POST['cb_nom']."',Date_expi='".$_POST['cb_date']."',CVV='".$_POST['cb_cvv']."', Type='".$_POST['type']."' WHERE Numero='".$_POST['cb_n']."'");
+			$req2->execute();
 			$req2->closeCursor();
 			header('location: ../Pages/Profil_acheteur.php');
 		}
