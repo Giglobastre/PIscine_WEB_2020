@@ -28,7 +28,7 @@ if(isset($_POST['mailform']))
 	}
 	else
 	{
-		$msg="Tous les champs doivent être complétés !";
+		$msg="Veuillez renseigner tous les champs.";
 	}
 }
 ?>
@@ -40,10 +40,10 @@ if(isset($_POST['mailform']))
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="icon" type="image/jpg" href="../Images/logo%20Ebay%20ECE.JPG" />
-    <link rel="stylesheet" type="text/css" href="../Style/Style_contact.css">
+  <link rel="stylesheet" type="text/css" href="../Style/Style_contact.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-</head>
+
   <div id="header">
     <img src="../Images/logo%20Ebay%20ECE.JPG" height="40" width="160"> 
   </div>
@@ -57,30 +57,41 @@ if(isset($_POST['mailform']))
       <a href="about.php">About</a>
     </div>
     <div style="float:right">
-      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
       <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
     </div>     
   </div>     
      <br> <br><br>  <br>
 
-	<body class="col">
-		<form method="POST" action="">
-            <div style="center">
-			<input type="text" name="nom" placeholder="Votre nom" value="<?php if(isset($_POST['nom'])) { echo $_POST['nom']; } ?>" /><br /><br />
-			<input type="email" name="mail" placeholder="Votre email" value="<?php if(isset($_POST['mail'])) { echo $_POST['mail']; } ?>" /><br /><br />
-			<textarea name="message" placeholder="Votre message"><?php if(isset($_POST['message'])) { echo $_POST['message']; } ?></textarea><br /><br />
-			<input type="submit" value="Envoyer" name="mailform"/>
-            <input type="reset" value="Reset" />
-            </div> 
+    <body class="col">
+		<center>
+        
+            <form action="" method="post" >
+
+            <fieldset>
+             <legend> Contact </legend>                 
+                 <input type="text" name="nom" placeholder="Votre nom" value="<?php if(isset($_POST['nom'])) { echo $_POST['nom']; } ?>" /><br /><br />
+                 <input type="email" name="mail" placeholder="Votre email" value="<?php if(isset($_POST['mail'])) { echo $_POST['mail']; } ?>" /><br /><br />
+                 <textarea name="message" placeholder="Votre message"><?php if(isset($_POST['message'])) { echo $_POST['message']; } ?></textarea><br /><br />
+                 <a href="../Projet%20piscine%202020.pdf"><img src="../Images/cg.PNG" height=15 width=170></a>
+                 <br>
+            </fieldset>
+
+             <p>
+             <input type="submit" value="Envoyer" name="mailform"/>
+             <input type="reset" value="Annuler" />
+             </p>
 
             </form>
-            <?php
-            if(isset($msg))
-            {
-                echo $msg;
-            }
-            ?>
-    <br> <br><br> <br> <br><br> <br> <br><br><br> <br><br> <br> <br><br> <br> <br><br> <br> <br> 
+            </center>
+        
+        <?php
+        if(isset($msg))
+        {
+            echo $msg;
+        }
+        ?>
+        <br><br><br> <br><br> <br> <br><br> <br> <br><br> <br> <br> 
 
   <div id="footer">
     Copyright &copy; 2020; 

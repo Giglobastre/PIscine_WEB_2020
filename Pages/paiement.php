@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +18,7 @@
 
 
     <div id="header">
-          <img src="../Images/logo%20Ebay%20ECE.JPG"  height="50" width="220"> 
+          <img src="../Images/logo%20Ebay%20ECE.JPG" height="50" width="220"> 
         </div>
         
         <div class="topnav">
@@ -35,36 +38,35 @@
         </div> 
 <br> <br> <br> 
     <center >
-    <form class="form" action="../Traitement/Traitement_creation.php" method="POST">
+    <form class="form" action="../Traitement/Traitement_paiement.php" method="POST">
         <table >
             <tr>
-            <td >Nom </td>
+            <td >Nom sur la carte</td>
             <td> <input type="text" name="nom"></td>
         </tr>
         <tr>
-            <td >Prenom </td>
+            <td >Prenom sur la carte </td>
             <td> <input type="text" name="prenom"></td>
         </tr>
         <tr>
-            <td >Pseudo</td>
-            <td> <input type="text" name="pseudo"></td>
+            <td >Numero de carte</td>
+            <td> <input type="text" name="numero"></td>
         </tr>
         <tr>
-            <td >Mail </td>
-            <td> <input type="text" name="mail"></td>
+            <td> Date expiration </td>
+            <td> <input type="text" name="date"></td>
         </tr>
 
         <tr>
-            <td >Mdp </td>
-            <td> <input type="password" name="mdp"></td>
+            <td >CVV </td>
+            <td> <input type="password" name="cvv"></td>
+        </tr>
+        
+        <tr>
         </tr>
         <tr>
-            <td >Comfirmation </td>
-            <td> <input type="password" name="mdp2"></td>
-        </tr>
-        <tr>
-            <p><input type="radio" name="type" value="1" > Vendeur <input type="radio" name="type" value="0" checked> Acheteur</p>
-        </tr>
+        <p><input type="radio" name="type" value="1" checked> Visa <input type="radio" name="type" value="0" > American express<input type="radio" name="type" value="3" > Mastercard</p><input type="radio" name="type" value="4" > Paypal</p>
+    </tr>
         <tr>
             <td></td>
             <td><button  type="submit" name="button1" value="submit">Valider</button></td>

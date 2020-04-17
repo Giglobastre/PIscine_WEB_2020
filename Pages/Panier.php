@@ -1,5 +1,5 @@
 <?php 
-  session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,68 +35,117 @@
     </div>     
   </div>   
 
-  <?php 
-  session_start();
+  <h1> VOTRE PANIER</h1>
+  <table class="table table-bordered table-striped table-dark">
 
-  $_SESSION['ID_Client']=1;
-  $total=0;
+    <tr class="panier">
+      <td class="espace">Nom produit</td>
+      <td class="espace">reference</td>
+      <td class="espace">Type achat</td>
+      <td class="espace">Prix</td>
+    </tr>
+
+    <?php 
+
+
+    $_SESSION['ID'];
+
+    $total=0;
 
 
 
-  $condition=0;
-  try{
-    $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
+    $condition=0;
+    try{
+      $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
 
-    $req = $bdd->prepare("SELECT ID_Client ,ID_Objet FROM panier"); 
-    $req->execute();
+      $req = $bdd->prepare("SELECT ID_Client ,ID_Objet,Acquereur,ID_transac FROM panier"); 
+      $req->execute();
 
-    while ($data = $req->fetch()){
+      while ($data = $req->fetch()){
 
-      if($data['ID_Client']==$_SESSION['ID_Client'])
-      {
-        $condition=1;
-        echo ("id client :");
-        echo '<h3>'.$data['ID_Client'].'</h3>';
-        echo ("id object :");
-        echo '<h3>'.$data['ID_Objet'].'</h3>';
-        $req2 = $bdd->prepare("SELECT ID,Prix FROM objets WHERE ID='".$data['ID_Objet']."'"); 
-        $req2->execute();
-
-        while ($data = $req2->fetch())
+        if(($data['ID_Client']==$_SESSION['ID'])&&($data['Acquereur']==1))
         {
-          $total=$data['Prix']+$total;
-          echo ("Prix :");
-          echo '<h3>'.$data['Prix'].'</h3>';
+          $condition=1;
 
+          $req2 = $bdd->prepare("SELECT ID,Prix,Nom,Methode_vente FROM objets WHERE ID='".$data['ID_Objet']."'"); 
+          $req2->execute();
+
+          while ($data = $req2->fetch())
+          {
+            $total=$data['Prix']+$total;?>
+            <tr>
+              <td><?php echo $data['Nom'];?></td>
+              <td><?php echo $data['ID'];?></td>
+              <?php if($data['Methode_vente']==0)
+              {
+                ?><td>Enchere</td><?php
+              }?>
+              <?php if($data['Methode_vente']==1)
+              {
+                ?><td>Negociation</td><?php
+              }?>
+              <td><?php echo $data['Prix'];?></td>
+              </tr><?php
+            }
+            $req2->closeCursor();;
+          }
         }
-
-
-
-        $req2->closeCursor();;
-      }
-
-
-    }
-    echo("Total panier =");
-    echo $total;
-    if($condition==0)
-    {
-      echo("panier vide");
-    }
-
-
-    $req->closeCursor();;
-  }
-  catch (Exception $e){
-
-    die('Erreur : ' . $e->getMessage());
-  }
-
-  ?>
-  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-  <div id="footer">
-    Copyright &copy; 2020; 
-    Clément Viéville - Hugo Teinturier - Kenny Huber
-  </div>
-</body>
-</html>
+        $req->closeCursor();;
+        ?>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="grey">Total</td>
+          <td class="grey"><?php echo $total;?></td>
+        </tr>
+      </table>
+      <h1>VOS AFFAIRES</h1>
+      <table class="table table-bordered table-striped">
+        <tr class="panier">
+          <td class="espace">Nom produit</td>
+          <td class="espace">reference</td>
+          <td class="espace">Type achat</td>
+          <td class="espace">Prix</td>
+        </tr>
+        <?php
+        $req5= $bdd->prepare("SELECT ID_Client ,ID_Objet,Acquereur,ID_transac FROM panier"); 
+        $req5->execute();
+        while ($data = $req5->fetch()){
+          if(($data['ID_Client']==$_SESSION['ID'])&&($data['Acquereur']==0))
+          {
+            $req6 = $bdd->prepare("SELECT ID,Prix,Nom,Methode_vente FROM objets WHERE ID='".$data['ID_Objet']."'"); 
+            $req6->execute();
+            while ($data = $req6->fetch())
+            {
+              $total=$data['Prix']+$total;?>
+              <tr>
+                <td><?php echo $data['Nom'];?></td>
+                <td><?php echo $data['ID'];?></td>
+                <?php if($data['Methode_vente']==0)
+                {
+                  ?><td>Enchere</td><?php
+                }?>
+                <?php if($data['Methode_vente']==1)
+                {
+                  ?><td>Negociation</td><?php
+                }?>
+                <td><?php echo $data['Prix'];?></td>
+                </tr><?php
+              }
+              $req6->closeCursor();;
+            }
+          }
+          $req5->closeCursor();;
+        }
+        catch (Exception $e){
+          die('Erreur : ' . $e->getMessage());
+        }
+        ?>
+      </table>
+      <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+      <div id="footer">
+        Copyright &copy; 2020; 
+        Clément Viéville - Hugo Teinturier - Kenny Huber
+      </div>
+    </body>
+    </html>

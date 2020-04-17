@@ -20,169 +20,132 @@ session_start();
   
   <div class="topnav">
     <div style="float:left">
-      <a class="active" href="index.php">Home</a>
+      <a href="index.php">Home</a>
       <a href="news.php">News</a>
-      <a href="Produit.php">Produit</a>
+      <a class="active" href="Produit.php">Produit</a>
       <a href="Contact.php">Contact</a>
       <a href="about.php">About</a>
     </div>
     <div style="float:right">
-      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
       <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
     </div>     
   </div>       
   <br/>
         
-<?php
- try{
-  $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
-}
-catch (Exception $e){
-  die('Erreur : ' . $e->getMessage());
-}
-$req = $bdd->prepare('SELECT ID,Nom, Photo1_nom, Photo1_extension,Photo2_nom, Photo2_extension,Photo3_nom, Photo3_extension,Video_nom, Video_extension, Prix, Description, Catégorie, Methode_vente FROM objets WHERE ID="'.$_POST['ID_obj'].'"');
-$req->execute();
-while ($data = $req->fetch()){
+    <?php
+     try{
+      $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
+    }
+    catch (Exception $e){
+      die('Erreur : ' . $e->getMessage());
+    }
+    $req = $bdd->prepare('SELECT ID,Nom, Photo1_nom, Photo1_extension,Photo2_nom, Photo2_extension,Photo3_nom, Photo3_extension,Video_nom, Video_extension, Prix, Description, Catégorie, Methode_vente FROM objets WHERE ID="'.$_POST['ID_obj'].'"');
+    $req->execute();
+    while ($data = $req->fetch()){
     //changer tout le echo comme les if ?  la ou pas de variabless par ex pour afficher les images que si elles sont set et la video aussi
-  echo '<div id="my_carousel" class="carousel slide" data-ride="carousel">
+      echo '<div id="myCarousel" class="carousel slide" data-ride="carousel">
+            
+            <center>
+            <h2><b>'.$data['Nom'].'</b></h2>              
+            </center>
+            <div style="padding-left:300px">
+            <table>
 
-  <center>
-  <h2>'.$data['Nom'].'</h2>
-  
-  
-    <!-- Bulles -->
+            <tr>
+            <td><a href="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"><img src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"class="img-responsive img-rounded" style="margin:0px auto;max-height:100%" width="300"; /></td>
+            <td><a href="../Objets/'.$data['Photo2_nom'].'.'.$data['Photo2_extension'].'"><img src="../Objets/'.$data['Photo2_nom'].'.'.$data['Photo2_extension'].'"class="img-responsive img-rounded" style="margin:0px auto;max-height:100%"width="300";  /></td>
+            <td><a href="../Objets/'.$data['Photo3_nom'].'.'.$data['Photo3_extension'].'"><img src="../Objets/'.$data['Photo3_nom'].'.'.$data['Photo3_extension'].'"class="img-responsive img-rounded" style="margin:0px auto;max-height:100%"width="300";  /></td>
+            </tr>
+            </table>
+            </div>
+            <a href="" />
+            <center>
+            <br />
 
-    <ol class="carousel-indicators">
-
-    <li data-target="#my_carousel" data-slide-to="0" class="active"></li>
-
-    <li data-target="#my_carousel" data-slide-to="1"></li>
-
-    <li data-target="#my_carousel" data-slide-to="2"></li>
-
-    </ol>
-
-    <!-- Slides -->
-
-    <div class="carousel-inner">
-
-    <!-- Page 1 -->
-
-    <div class="item active">  
-
-    <div class="carousel-page">
-    <img src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"class="img-responsive img-rounded" style="margin:0px auto;max-height:100%;/>
-
-</div> 
-
-<div class="carousel-caption">Page 1 de présentation</div>
-
-</div>   
-
-<!-- Page 2 -->
-
-    <div class="item"> 
-
-    <div class="carousel-page">
-    <img src="../Objets/'.$data['Photo2_nom'].'.'.$data['Photo2_extension'].'"class="img-responsive img-rounded" style="margin:0px auto;max-height:100%;  /></div> 
-
-<div class="carousel-caption">Page 2 de présentation</div>
-
-</div>  
-
-<!-- Page 3 -->
-
-    <div class="item">  
-
-    <div class="carousel-page">
-    <img src="../Objets/'.$data['Photo3_nom'].'.'.$data['Photo3_extension'].'"class="img-responsive img-rounded" style="margin:0px auto;max-height:100%; />
-
-</div>  
-
-<div class="carousel-caption">Page 2 de présentation</div>
-
-</div>     
-
-</div>
-
-<!-- Contrôles -->
-
-<a class="left carousel-control" href="#my_carousel" data-slide="prev">
-<span class="glyphicon glyphicon-chevron-left"></span>
-</a>
-<a class="right carousel-control" href="#my_carousel" data-slide="next">
-<span class="glyphicon glyphicon-chevron-right"></span>
-</a>
-</div>
-
-  <video width="320" height="240" autoplay>
-  <source src="../Objets/'.$data['Video_nom'].'.'.$data['Video_extension'].'" type="video/'.$data['Video_extension'].'" />
-  source video non supportée par le navigateur
-  </video>
-  <p id="Description">'.$data['Description'].'</p>
-  <h3>'.$data['Prix'].'</h3>
-  </div>
-  </center>
-  ';
-    //aff catégorie
-  if($data['Catégorie']==1){
-    ?><p>Catégorie : Féraille et trésor</p><?php
-  }else if($data['Catégorie']==2){
-    ?><p>Catégorie : Bon pour le musée</p><?php
-  }else if($data['Catégorie']==3){
-    ?><p>Catégorie : Accessoire VIP</p><?php
-  }
+            <p id="Description">'.$data['Description'].'</p>
+            <h3><b>'.$data['Prix'].' €</b></h3>
+            <video width="320" height="240" autoplay>
+            <source src="../Objets/'.$data['Video_nom'].'.'.$data['Video_extension'].'" type="video/'.$data['Video_extension'].'" />
+            source video non supportée par le navigateur
+            </video>  
+            </center>              
+      ';            
+        //aff catégorie
+      if($data['Catégorie']==1){
+        ?>
+    <center><p>Catégorie : Féraille et trésor</p></center>
+    
+    <?php
+      }else if($data['Catégorie']==2){
+        ?>
+    <center><p>Catégorie : Bon pour le musée</p></center><?php
+      }else if($data['Catégorie']==3){
+    ?><center><p>Catégorie : Accessoire VIP</p></center><?php
+      }
     //aff bouton pour participer a la vente
     //RELIER LES FORMS A UNE PAGE //////////////////////////////////////////////////////////////////////////////
     if($data['Methode_vente']==0 && isset($_SESSION['ID'])){//enchere
-        
+
       ?>
-    
-    <div style="float:center">
+
+    <center>
+        <br/><br/>
         <form action="../Traitement/Traitement_calculpanier" method="post">
         <input type="hidden" name="ID_obj" value="<?php echo $data['ID'];?>">
         <input type="hidden" name="ID_ach" value="<?php echo $_SESSION['ID'];?>">
-        <label for="prix">Montant maximum : </label><input type="text" name="prix">
+        <label for="prix">Montant maximum : </label><input type="text" name="prixdonne">
         <input type="submit" name="submit" Value="Particper a l'enchère">
         </form>
-    </div>
+    </center>
         <?php
     }
     else if($data['Methode_vente']==1 && isset($_SESSION['ID'])){//nego
-      ?><form>
+      ?>
+    <br/><br/>
+        <center>
+        <form>
         <input type="hidden" name="ID_obj" value="<?php echo $data['ID'];?>">
         <input type="hidden" name="ID_ach" value="<?php echo $_SESSION['ID'];?>">
         <input type="text" name="prix"><label for="prix">Proposez un prix : </label>
         <input type="submit" name="submit" Value="Proposer">
-        </form><?php
+        </form>
+        </center>
+            <?php
     }
     if(isset($_SESSION['ID'])){//achat immediat
       ?>
+    <br/><br/>
+    <center>
       <form>
         <input type="hidden" name="ID_obj" value="<?php echo $data['ID'];?>">
         <input type="hidden" name="ID_ach" value="<?php echo $_SESSION['ID'];?>">
         <p>Acheter immediatement, prix : <?php echo $data['Prix']*3;?></p>
         <input type="submit" name="submit" Value="Acheter">
-      </form><?php
+      </form>
+    </center>
+         
+    <?php
     }
     else if(!isset($_SESSION['ID'])){//connexion
       ?>
-      <p>connectez vous ou creez vous un compte pour acheter</p>
-      <form action="connexion.php">
-        <input type="submit" name="submit" Value="Connexion">
+    <br/><br/>
+      <center>
+      <form>
+      <a href="connexion.php"><img height="20" width="20" src="../Images/warning.PNG" alt="" hspace="0"><a/>
+      <p style="color:#FF0000";>Connectez vous ou créez-vous un compte pour acheter ce produit.</p>
+      <a href="connexion.php"><img height="20" width="130" src="../Images/inscriptionConnexion.PNG" alt="" hspace="0"></a>
       </form>
-      <form action="creation.php">
-        <input type="submit" name="submit" Value="Creer un compte">
-      </form>
+      </center>
       <?php
     }
   }
 ?>
+    <br/><br/><br/>
     
-    
-<div id="footer">
-Copyright &copy; 2020; 
-Clément Viéville - Hugo Teinturier - Kenny Huber
-</div>
+    <div id="footer">
+        Copyright &copy; 2020; 
+        Clément Viéville - Hugo Teinturier - Kenny Huber
+    </div>
 </body>
 </html>

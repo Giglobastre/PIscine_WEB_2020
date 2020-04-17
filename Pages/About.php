@@ -29,10 +29,61 @@
       <a class="active" href="about.php">About</a>
     </div>
     <div style="float:right">
-      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
-      <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
+        
+      <?php
+      if(isset($_SESSION['ID'])){
+        ?>
+          <form method="post" action="../Traitement/Traitement_deco.php">
+            <input type="submit" value="Deconnexion">
+          </form>
+        <?php
+      }
+      //RELIER LES FORM // remplacer par des <a> ??//////////////////////////////////////////////////////////////////////////////
+      if(isset($_SESSION['type']) && $_SESSION['type']==0){//acheteur
+        ?>
+          <form method="post" action="">
+            <input type="submit" name="submit_ach" value="Mes achats">
+          </form>
+        <?php
+      }
+      if(isset($_SESSION['type']) && $_SESSION['type']==1){//vendeur
+        ?>
+          <form method="post" action="">
+            <input type="submit" name="submit_ach" value="Mes ventes">
+          </form>
+        <?php
+      }
+      if(isset($_SESSION['admin']) && $_SESSION['admin']==1){//admin
+        ?>
+          <form method="post" action="">
+            <input type="submit" name="submit_ach" value="Administration">
+          </form>
+        <?php
+      }
+      ?>
+      <?php
+      if(isset($_SESSION['ID']) && $_SESSION['type']==0 && $_SESSION['admin']==0){//ach
+        ?>
+          <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+          <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
+        <?php
+      }else if(isset($_SESSION['ID']) && $_SESSION['type']==1&& $_SESSION['admin']==0){//Vendeur
+        ?>
+          <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+          <?php
+      }if(isset($_SESSION['ID']) && $_SESSION['admin']==1){//admin
+        ?>
+          <a href="Profil_Admin.php"><img height="27" src="../Images/ImgAcoountConnexionAdmin.jpg" alt="" hspace="0"></a>
+          <?php
+      }if(!isset($_SESSION['ID'])){
+        ?>
+          <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
+        <?php
+      }
+      ?>      
+        
     </div>     
-  </div>      
+  </div>    
   
   <center >
 
@@ -46,25 +97,10 @@
       <p>Nous sommes 3 élèves ingénieurs de l'<b>ECE Paris</b>.</p>
   </div>
     
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
   <div id="footer">
-    Copiright &copy; 2020; 
+    Copyright &copy; 2020; 
     Clément Viéville - Hugo Teinturier - Kenny Huber
   </div>
     

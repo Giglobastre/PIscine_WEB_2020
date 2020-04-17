@@ -1,6 +1,3 @@
-<?php 
-  session_start();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +15,7 @@
 
 
     <div id="header">
-      <img src="logo.JFIF" height="50" width="220"> 
+      <img src="../Images/logo%20Ebay%20ECE.JPG" height="50" width="220"> 
   </div>
 
   <div class="topnav">
@@ -70,6 +67,7 @@
                 <td> <input type="password" name="mdp2"></td>
             </tr>
             <tr>
+              <p><input type="radio" name="type" value="1" > Vendeur <input type="radio" name="type" value="0" checked> Acheteur</p>
             </tr>
             <tr>
                 <td></td>
