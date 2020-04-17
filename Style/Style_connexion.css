@@ -1,44 +1,88 @@
 #header{
-    background-color: white;
-    color: right;
-    text-align: center;
-    padding: 5px;
+  background-color: white;
+  color: right;
+  text-align: center;
+  padding: 5px;
 }
 
-body 
-    {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ }
+form {
+ background-color:#FAFAFA;
+ padding:10px;
+ width:280px;
+ }
+fieldset {
+ padding:0 20px 20px 20px;
+ margin-bottom:10px;
+ border:1px solid green;
+ }
+legend {
+ color:green;
+ font-weight:bold
+ }
+label {
+ margin-top:10px;
+ display:block;
+ }
+label.inline {
+ display:inline;
+ margin-right:50px;
+ }
+input, textarea, select, option {
+ background-color:transparent;
+ }
+input, textarea, select {
+ padding:3px;
+ border:1px solid black;
+ border-radius:5px;
+ width:200px;
+ box-shadow:1px 1px 2px #C0C0C0 inset;
+ }
+select {
+ margin-top:10px;
+ }
+input[type=radio] {
+ background-color:transparent;
+ border:none;
+ width:10px;
+ }
+input[type=submit], input[type=reset] {
+ width:100px;
+ margin-left:5px;
+ box-shadow:1px 1px 1px grey;
+ cursor:pointer;
+ }
 
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
 
-    .topnav a {
-      float: left;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
 
-    .topnav a:hover {
-      background-color: #ddd; 
-      color: black; 
-    }
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
-    .topnav a.active {
-      background-color: #4CAF50;
-      color: white;
-    }
+.topnav a:hover {
+  background-color: #ddd; 
+  color: black;
+}
 
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
 #footer{
-     background-color: black;
-     color: white;
-     clear: both;
-     text-align: center;
-     padding: 5px;
-}
+ background-color: black;
+ color: white;
+ clear: both;
+ text-align: center;
+ padding: 5px;
+}   
