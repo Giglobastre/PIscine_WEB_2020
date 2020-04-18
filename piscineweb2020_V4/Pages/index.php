@@ -28,33 +28,32 @@ $_SESSION['Test']=0;
       <a href="Contact.php">Contact</a>
       <a href="about.php">A propos d'ECEbay</a>
     </div>
-    <div style="float:right">
-
+    <div style="float:right" id="boutons">
       <?php
       if(isset($_SESSION['ID'])){
         ?>
         <form method="post" action="../Traitement/Traitement_deco.php">
-          <input type="submit" value="Deconnexion">
+          <input type="submit" name="submit_ach" value="Deconnexion">
         </form>
         <?php
       }
       if(isset($_SESSION['type']) && $_SESSION['type']==0){//acheteur
         ?>
-        <form method="post" action="">
+        <form method="post" action="" id="form2">
           <input type="submit" name="submit_ach" value="Mes achats">
         </form>
         <?php
       }
       if(isset($_SESSION['type']) && $_SESSION['type']==1){//vendeur
         ?>
-        <form method="post" action="">
+        <form method="post" action="" id="form3">
           <input type="submit" name="submit_ach" value="Mes ventes">
         </form>
         <?php
       }
       if(isset($_SESSION['admin']) && $_SESSION['admin']==1){//admin
         ?>
-        <form method="post" action="">
+        <form method="post" action="" id="form1">
           <input type="submit" name="submit_ach" value="Administration">
         </form>
         <?php
@@ -168,37 +167,37 @@ $_SESSION['Test']=0;
   //$r=mysqli_num_rows($req);
   $r=$req->rowCount();
   $i=0;
-  ?><table><?php
+  ?><center><table><?php
   while ($data = $req->fetch()){
     if($i%2==0){
-        ?><tr><?php
-      }
-        ?><td><?php
-      echo '<div id="objet">
-      <center>
-      <h3><b>'.$data['Nom'].'</b></h3>
-      <form method="post" action="objet.php">
-      <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
-      <input type="image" height=200 src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"/>
-      </form>
-      <form method="post" action="../Traitement/Traitement_favoris.php">
-      <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
-      <p><span style="border: 1px solid grey;" id="Description">'.$data['Description'].'</span></span></p>
-      <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
-      </form>        
-      </center>
-      </div>
-      </td>
-      ';
-      $i++;
-      if($i%2==0){
-        ?></tr><?php
-      }
-      if($i%2!=0 && $i==$r){
-        ?></tr><?php
-      }
+      ?><tr><?php
+    }
+    ?><td><?php
+    echo '<div id="objet">
+    <center>
+    <h3><b>'.$data['Nom'].'</b></h3>
+    <form method="post" action="objet.php">
+    <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+    <input type="image" height=200 src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"/>
+    </form>
+    <form method="post" action="../Traitement/Traitement_favoris.php">
+    <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+    <p><span style="border: 1px solid grey;" id="Description">'.$data['Description'].'</span></span></p>
+    <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
+    </form>        
+    </center>
+    </div>
+    </td>
+    ';
+    $i++;
+    if($i%2==0){
+      ?></tr><?php
+    }
+    if($i%2!=0 && $i==$r){
+      ?></tr><?php
+    }
   }
-  ?></div><?php
+  ?></table></center><?php
   $req->closeCursor();
   ?>
 
