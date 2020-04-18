@@ -1,4 +1,3 @@
-
 #header{
   background-color: white;
   color: right;
@@ -43,5 +42,32 @@ body
 }   
 
 #recents{
-   padding-left:0px;
+   padding-left:30px;
+}
+.grey
+{
+  background-color: grey;
+}
+.espace
+{
+  background-color: black;
+  color: white;
+  width:200px;
+}
+.espac
+{
+  background-color: #C7F685;
+  color: color;
+  width:200px;
+}
+.panier
+{
+  background-color: black;
+  color: white;
+}
+.espa
+{
+  background-color: #E14A4A;
+  color: color;
+  width:200px;
 }

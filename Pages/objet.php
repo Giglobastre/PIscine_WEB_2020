@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,16 +21,65 @@ session_start();
   
   <div class="topnav">
     <div style="float:left">
-      <a href="index.php">Home</a>
-      <a href="news.php">News</a>
+      <a href="index.php">Menu</a>
       <a class="active" href="Produit.php">Produit</a>
+      <a href="negociations.php">Négociation</a>
       <a href="Contact.php">Contact</a>
-      <a href="about.php">About</a>
+      <a href="about.php">A propos d'ECEbay</a>
     </div>
     <div style="float:right">
-      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
-      <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
-    </div>     
+
+      <?php
+      if(isset($_SESSION['ID'])){
+        ?>
+        <form method="post" action="../Traitement/Traitement_deco.php">
+          <input type="submit" value="Deconnexion">
+        </form>
+        <?php
+      }
+      if(isset($_SESSION['type']) && $_SESSION['type']==0){//acheteur
+        ?>
+        <form method="post" action="">
+          <input type="submit" name="submit_ach" value="Mes achats">
+        </form>
+        <?php
+      }
+      if(isset($_SESSION['type']) && $_SESSION['type']==1){//vendeur
+        ?>
+        <form method="post" action="">
+          <input type="submit" name="submit_ach" value="Mes ventes">
+        </form>
+        <?php
+      }
+      if(isset($_SESSION['admin']) && $_SESSION['admin']==1){//admin
+        ?>
+        <form method="post" action="">
+          <input type="submit" name="submit_ach" value="Administration">
+        </form>
+        <?php
+      }
+      ?>
+      <?php
+      if(isset($_SESSION['ID']) && $_SESSION['type']==0 && $_SESSION['admin']==0){//ach
+        ?>
+        <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+        <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
+        <?php
+      }else if(isset($_SESSION['ID']) && $_SESSION['type']==1&& $_SESSION['admin']==0){//Vendeur
+        ?>
+        <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+        <?php
+      }if(isset($_SESSION['ID']) && $_SESSION['admin']==1){//admin
+        ?>
+        <a href="Profil_Admin.php"><img height="27" src="../Images/ImgAcoountConnexionAdmin.jpg" alt="" hspace="0"></a>
+        <?php
+      }if(!isset($_SESSION['ID'])){
+        ?>
+        <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
+        <?php
+      }
+      ?>
+    </div>    
   </div>       
   <br/>
         
@@ -40,6 +90,7 @@ session_start();
     catch (Exception $e){
       die('Erreur : ' . $e->getMessage());
     }
+    if(isset($_POST['ID_obj'])){
     $req = $bdd->prepare('SELECT ID,Nom, Photo1_nom, Photo1_extension,Photo2_nom, Photo2_extension,Photo3_nom, Photo3_extension,Video_nom, Video_extension, Prix, Description, Catégorie, Methode_vente FROM objets WHERE ID="'.$_POST['ID_obj'].'"');
     $req->execute();
     while ($data = $req->fetch()){
@@ -59,7 +110,6 @@ session_start();
             </tr>
             </table>
             </div>
-            <a href="" />
             <center>
             <br />
 
@@ -75,7 +125,6 @@ session_start();
       if($data['Catégorie']==1){
         ?>
     <center><p>Catégorie : Féraille et trésor</p></center>
-    
     <?php
       }else if($data['Catégorie']==2){
         ?>
@@ -86,15 +135,13 @@ session_start();
     //aff bouton pour participer a la vente
     //RELIER LES FORMS A UNE PAGE //////////////////////////////////////////////////////////////////////////////
     if($data['Methode_vente']==0 && isset($_SESSION['ID'])){//enchere
-
       ?>
-
     <center>
         <br/><br/>
         <form action="../Traitement/Traitement_calculpanier" method="post">
         <input type="hidden" name="ID_obj" value="<?php echo $data['ID'];?>">
         <input type="hidden" name="ID_ach" value="<?php echo $_SESSION['ID'];?>">
-        <label for="prix">Montant maximum : </label><input type="text" name="prixdonne">
+        <label for="prixdonne">Montant maximum : </label><input type="text" name="prixdonne">
         <input type="submit" name="submit" Value="Particper a l'enchère">
         </form>
     </center>
@@ -138,6 +185,7 @@ session_start();
       </form>
       </center>
       <?php
+    }//fermeture if avant while
     }
   }
 ?>

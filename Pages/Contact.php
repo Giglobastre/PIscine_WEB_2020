@@ -50,11 +50,11 @@ if(isset($_POST['mailform']))
   
   <div class="topnav">
     <div style="float:left">
-      <a href="index.php">Home</a>
-      <a href="news.php">News</a>
+      <a href="index.php">Menu</a>
       <a href="Produit.php">Produit</a>
+      <a href="negociations.php">Négociation</a>
       <a class="active" href="Contact.php">Contact</a>
-      <a href="about.php">About</a>
+      <a href="about.php">A propos d'ECEbay</a>
     </div>
     <div style="float:right">
       <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>

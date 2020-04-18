@@ -1,73 +1,29 @@
-<?php 
-
-session_start();
-
-
-
-?>
-
+<?php session_start();?>
 <!DOCTYPE html>
-
-
-
 <html>
-
-
-
 <head>
-
-
-
   <meta charset="utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
   <link rel="icon" type="image/jpg" href="../Images/logo%20Ebay%20ECE.JPG"/>
-
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-
   <link rel="stylesheet" type="text/css" href="../Style/Style_connexion.css" />
-
-
-
 </head>
-
-
-
 <body class="col">
-
-
-
   <div id="header">
-
     <img src="../Images/logo%20Ebay%20ECE.JPG" height="40" width="160"> 
-
   </div>    
-
-
-
   <div class="topnav">
-
     <div style="float:left">
-
-      <a href="index.php">Home</a>
-
+      <a href="index.php">Menu</a>
       <a href="AchatsPrécedents.php">Achats Précedents</a>
-
       <a href="Favoris.php">Favoris</a>
-
+      <a href="negociations.php">Négociation</a>
       <a href="Contact.php">Contact</a>
-
-      <a href="about.php">About</a>
-
+      <a href="about.php">A propos d'ECEbay</a>
       <a href="Paramètres.php">Paramètres</a>
-
     </div>
-
     <div style="float:right">
 
       <a class="active" href="connexion.php"><img height="27" src="../Images/imgAccountVerte.JPG" alt="" hspace="0"></a>
@@ -88,8 +44,8 @@ session_start();
                  <input type="text" name="prenom" placeholder="Prenom ">
                  <input type="text" name="pseudo" placeholder="Pseudo ">
                  <input type="email" name="mail" placeholder="Mail ">
-                 <input  type="text" name="mdp" placeholder="Mot de Passe ">  
-                 <input type="text" name="mdp2" placeholder="Confirmation Mot de Passe ">
+                 <input  type="password" name="mdp" placeholder="Mot de Passe ">  
+                 <input type="password" name="mdp2" placeholder="Confirmation Mot de Passe ">
                  <td > Acheteur <input type="radio" name="type" value="0"checked> </td>
                  <td > Vendeur <input type="radio" name="type" value="0"checked> </td>
                  <p>
@@ -101,7 +57,7 @@ session_start();
             <fieldset>
              <legend><b>Connexion</b></legend>
               <input type="email" name="mail2" placeholder="Mail ">
-              <input type="text" name="mdp1" placeholder="Mot de Passe">
+              <input type="password" name="mdp1" placeholder="Mot de Passe">
                 <p>
              <input type="submit" value="Envoyer" />
              <input type="reset" value="Annuler" />
@@ -110,7 +66,8 @@ session_start();
       
           
 
-            <?php if($_SESSION['Test']==1)
+            <?php 
+            if($_SESSION['Test']==1)
 
             {
 

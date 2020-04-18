@@ -21,11 +21,11 @@
   
   <div class="topnav">
     <div style="float:left">
-      <a href="index.php">Home</a>
-      <a href="news.php">News</a>
+      <a href="index.php">Menu</a>
       <a class="active" href="Produit.php">Produit</a>
+      <a href="negociations.php">Négociation</a>
       <a href="Contact.php">Contact</a>
-      <a href="about.php">About</a>
+      <a href="about.php">A propos d'ECEbay</a>
     </div>
     <div style="float:right">
         
