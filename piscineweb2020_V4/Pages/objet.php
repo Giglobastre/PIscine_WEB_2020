@@ -1,5 +1,6 @@
 <?php 
 session_start();
+$_SESSION['CAT']=0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -98,7 +99,6 @@ session_start();
     $req10 = $bdd->prepare('SELECT ID_Client FROM negociations WHERE ID_Objet="'.$_POST['ID_obj'].'"');
     $req10->execute();
     while ($data = $req10->fetch()){
-  
       if($data['ID_Client']==$_SESSION['ID'])
       {
         $condi=1;
@@ -109,6 +109,8 @@ session_start();
     $req10->closeCursor();
     while ($data = $req->fetch()){
     //changer tout le echo comme les if ?  la ou pas de variabless par ex pour afficher les images que si elles sont set et la video aussi
+      $_SESSION['CAT']=$data['Catégorie'];
+      
       echo '<div id="myCarousel" class="carousel slide" data-ride="carousel">
       <center>
       <h2><b>'.$data['Nom'].'</b></h2>              
@@ -222,6 +224,18 @@ session_start();
 }
 ?>
 <br/><br/><br/>
+
+<?php
+echo "////////////////////////////////////";
+echo $_SESSION['CAT'];
+  if(isset($_SESSION['ID'])){
+    $req= $bdd->prepare('UPDATE utilisateurs SET Type_derniervu="'.$_SESSION['CAT'].'" WHERE ID="'.$_SESSION['ID'].'"');
+    $req->execute();
+  }
+  unset($_SESSION['CAT']);
+?>
+
+
 
 <div id="footer">
   Copyright &copy; 2020; 
