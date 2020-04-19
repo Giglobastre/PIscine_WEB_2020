@@ -76,7 +76,7 @@ if(isset($_SESSION['ID'])){
         <?php } else { ?>
           <a href="Profil_Acheteur.php"><p>Mon compte</p><img height="27" src="ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
         <?php } ?>
-        <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
+        <a href="Panier.php"><img height="27" src="../Images/PanierVert.PNG" alt="" hspace="0"></a>
         <?php
       }else if(isset($_SESSION['ID']) && $_SESSION['type']==1&& $_SESSION['admin']==0){//Vendeur
         ?>
