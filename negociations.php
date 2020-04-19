@@ -1,6 +1,5 @@
 <?php 
 session_start();
-$_SESSION['ID']=2;
 ?>
 <!DOCTYPE html>
 
@@ -26,15 +25,16 @@ $_SESSION['ID']=2;
 
   <div class="topnav">
     <div style="float:left">
-      <a href="index.php">Home</a>
+      <a href="index.php">Menu</a>
       <a href="AchatsPrécedents.php">Achats Précedents</a>
       <a href="Favoris.php">Favoris</a>
+      <a class="active" href="negociations.php">Négociation</a>
       <a href="Contact.php">Contact</a>
-      <a href="about.php">About</a>
+      <a href="about.php">A propos d'ECEbay</a>
       <a href="Paramètres.php">Paramètres</a>
     </div>
     <div style="float:right">
-      <a class="active" href="connexion.php"><img height="27" src="../Images/imgAccountVerte.JPG" alt="" hspace="0"></a>
+      <a href="connexion.php"><img height="27" src="../Images/imgAccountVerte.JPG" alt="" hspace="0"></a>
       <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
     </div>     
   </div>
@@ -53,12 +53,12 @@ $_SESSION['ID']=2;
       $req = $bdd->prepare("SELECT ID_Client,ID_Objet,ID_Vendeur,CPT,Offre,Coffre FROM negociations WHERE Acquereur=0 "); 
       $req->execute();
       while ($data = $req->fetch()){
-        echo("jijij");
+        
 
 
         if(($data['ID_Client']==$_SESSION['ID']))
         {
-          echo("acheteur");
+          
 
           if($data['CPT']%2==0)
             {?>
@@ -73,10 +73,11 @@ $_SESSION['ID']=2;
 
               </tr>
               <tr>
-                ?><td ><?php echo $data['ID_Objet'];?></td><?php
+                <td ><?php echo $data['ID_Objet'];?></td><?php
                 ?><td >En attente de votre reponse</td><?php
                 ?><td ><?php echo $data['Coffre'];?></td><?php
-                ?><td >oui <input type="radio" name="type" value="1"checked> non <input type="radio" name="type" value="0"checked> </b></td>
+                ?><input type="hidden" name="ID_obj" value="<?php echo $data['ID_Objet'];?>">
+                <td >oui <input type="radio" name="type" value="1"checked> non <input type="radio" name="type" value="0"checked> </b></td>
                 <td ><input type="text" name="prixdonne" placeholder="Prix "></td>
                 <td ><input type="submit" name="button" ></td></tr></tr>
                 <?php
@@ -92,12 +93,12 @@ $_SESSION['ID']=2;
 
 
                   </tr><tr>
-                    ?><td ><?php echo $data['ID_Objet'];?></td><?php
+                    <td ><?php echo $data['ID_Objet'];?></td><?php
                     ?><td >En attente du vendeur</td><?php
                     ?><td ><?php echo $data['Offre'];?></td><?php
 
 
-                    ?><td ><?php echo $data['CPT'];?></td><?php
+                    ?><td ><?php echo (10-$data['CPT']);?></td><?php
 
 
                   }?>
@@ -109,7 +110,7 @@ $_SESSION['ID']=2;
 
                 if(($data['ID_Vendeur']==$_SESSION['ID']))
                 {
-                  echo("vendeur");
+                 
 
                   if($data['CPT']%2==1)
                     {?>
@@ -124,9 +125,10 @@ $_SESSION['ID']=2;
 
                       </tr>
                       <tr>
-                        ?><td ><?php echo $data['ID_Objet'];?></td><?php
+                        <td ><?php echo $data['ID_Objet'];?></td><?php
                         ?><td >En attente de votre reponse</td><?php
                         ?><td ><?php echo $data['Offre'];?></td><?php
+                        ?><input type="hidden" name="ID_obj" value="<?php echo $data['ID_Objet'];?>">
                         ?><td >oui <input type="radio" name="type" value="1"checked> non <input type="radio" name="type" value="0"checked> </b></td>
                         <td ><input type="text" name="prixdonne" placeholder="Prix "></td>
                         <td ><input type="submit" name="button" ></td></tr></tr>
@@ -143,7 +145,7 @@ $_SESSION['ID']=2;
 
 
                           </tr><tr>
-                            ?><td ><?php echo $data['ID_Objet'];?></td><?php
+                            <td ><?php echo $data['ID_Objet'];?></td><?php
                             ?><td >En attente du vendeur</td><?php
                             ?><td ><?php echo $data['Coffre'];?></td><?php
 
@@ -187,69 +189,69 @@ $_SESSION['ID']=2;
                         $req5->execute();
 
                         while ($data = $req5->fetch()){
-                          echo("jijij");
+                         
 
 
                           if(($data['ID_Client']==$_SESSION['ID']))
                           {
-                            echo("acheteur");
+                            
 
                             ?>
 
-                                <tr>
+                            <tr>
 
-                                  <?php
-                                  if($data['Acquereur']==1)
-                                  {
-                                    ?><td class="espac" ><?php echo $data['ID_Objet'];?></td>
-                                    ?><td class="espac">Finis</td><?php
-                                    ?><td class="espac"><?php echo $data['ID_Vendeur'];?></td><?php
-                                    ?><td class="espac"><?php echo $data['Prix_final'];?></td></tr><?php
-
-                                  }
-
-                                  if($data['Acquereur']==3)
-                                  {
-
-                                    ?><td class="espa" ><?php echo $data['ID_Objet'];?></td>
-                                    ?><td class="espa">Annulée</td><?php
-                                    ?><td class="espa"><?php echo $data['ID_Vendeur'];?></td><?php
-                                    ?><td class="espa">////////<td><?php
-
-                                  }
+                              <?php
+                              if($data['Acquereur']==1)
+                              {
+                                ?><td class="espac" ><?php echo $data['ID_Objet'];?></td>
+                                <td class="espac">Finis</td><?php
+                                ?><td class="espac"><?php echo $data['ID_Vendeur'];?></td><?php
+                                ?><td class="espac"><?php echo $data['Prix_final'];?></td></tr><?php
 
                               }
+
+                              if($data['Acquereur']==3)
+                              {
+
+                                ?><td class="espa" ><?php echo $data['ID_Objet'];?></td>
+                                ?><td class="espa">Annulée</td><?php
+                                ?><td class="espa"><?php echo $data['ID_Vendeur'];?></td><?php
+                                ?><td class="espa">////////<td><?php
+
+                              }
+
+                            }
 
 
 
 
                             if(($data['ID_Vendeur']==$_SESSION['ID']))
-                          {
-                            echo("vendeur");
+                            {
+                             
 
-                           
-                            ?>
-                                <tr>
+                              
+                              ?>
+                              <tr>
 
-                                  <?php
-                                  if($data['Acquereur']==1)
-                                  {
-                                    ?><td class="espac" ><?php echo $data['ID_Objet'];?></td>
-                                    ?><td class="espac">Finis</td><?php
-                                    ?><td class="espac"><?php echo $data['ID_Client'];?></td><?php
-                                    ?><td class="espac"><?php echo $data['Prix_final'];?></td></tr><?php
+                                <?php
+                                if($data['Acquereur']==1)
+                                {
+                                  ?><td class="espac" ><?php echo $data['ID_Objet'];?></td>
+                                  ?><td class="espac">Finis</td><?php
+                                  ?><td class="espac"><?php echo $data['ID_Client'];?></td><?php
+                                  ?><td class="espac"><?php echo $data['Prix_final'];?></td></tr><?php
 
-                                  }
+                                }
 
-                                  if($data['Acquereur']==3)
-                                  {
+                                if($data['Acquereur']==3)
+                                {
 
-                                    ?><td class="espa" ><?php echo $data['ID_Objet'];?></td>
-                                    ?><td class="espa">Annulée</td><?php
-                                    ?><td class="espa"><?php echo $data['ID_Client'];?></td><?php
-                                    ?><td class="espa">////////<td><?php
+                                  ?><td class="espa" ><?php echo $data['ID_Objet'];?></td>
+                                  ?><td class="espa">Annulée</td><?php
+                                  ?><td class="espa"><?php echo $data['ID_Client'];?></td><?php
+                                  ?><td class="espa">////////<td><?php
 
-                                  }
+                                }
 
                                 
 
@@ -264,13 +266,13 @@ $_SESSION['ID']=2;
 
 
 
-                                    }
-                                    $req->closeCursor();;?>
+                            }
+                            $req->closeCursor();;?>
 
 
 
-                                  </table>
+                          </table>
 
-                                </form>
-                              </body>
-                              </html>
+                        </form>
+                      </body>
+                      </html>

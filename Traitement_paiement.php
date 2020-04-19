@@ -27,8 +27,11 @@ try{
 
 			if(($data['Date_exp']==$date)&&($data['CVV']==$cvv)&&($data['Prenom']==$prenom)&&($data['Numero']==$numero)&&($data['Nom']==$nom)&&($data['Type']==$type))
 			{
-				echo '<h3>'.$data['Date_exp'].'</h3>';
 				$condition=1;
+
+					$req5 = $bdd->prepare("UPDATE panier SET Acquereur= 4 WHERE Acquereur=3 AND ID_Client='".$_SESSION['ID']."'" );
+					$req5->execute();
+					$req5->closeCursor();;
 			}
 			
 
@@ -37,6 +40,8 @@ try{
 		if($condition==0)
 		{
 			echo("La carte n'existe pas");
+			$_SESSION['Test']=2;
+			header('location: ../Pages/paiement.php');
 		}
 		$req->closeCursor();;
 	}
@@ -46,7 +51,8 @@ try{
 	{
 
 		
-		echo("champ vide");
+		$_SESSION['Test']=1;
+			header('location: ../Pages/paiement.php');
 		/*header('Location: http://localhost/site/Piscine/');*/
 		/*exit();*/
 	}
