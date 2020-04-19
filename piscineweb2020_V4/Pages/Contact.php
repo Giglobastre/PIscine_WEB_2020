@@ -13,6 +13,8 @@ if(isset($_POST['mailform']))
 			<body>
 				<div align="center">
 					<br />
+					<img src="../Images/logo%20Ebay%20ECE.JPG">
+					<br />
 					<u>Nom de l\'expéditeur :</u>'.$_POST['nom'].'<br />
 					<u>Mail de l\'expéditeur :</u>'.$_POST['mail'].'<br />
 					<br />
@@ -48,19 +50,127 @@ if(isset($_POST['mailform']))
     <img src="../Images/logo%20Ebay%20ECE.JPG" height="40" width="160"> 
   </div>
   
-  <div class="topnav">
+      <div class="topnav">
+
     <div style="float:left">
+
       <a href="index.php">Menu</a>
+
       <a href="Produit.php">Produit</a>
+
       <a href="negociations.php">Négociation</a>
+
       <a class="active" href="Contact.php">Contact</a>
+
       <a href="about.php">A propos d'ECEbay</a>
+
     </div>
-    <div style="float:right">
-      <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
-      <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
-    </div>     
-  </div>     
+
+    <div style="float:right" id="boutons">
+
+      <?php
+
+      if(isset($_SESSION['ID'])){
+
+        ?>
+
+        <form method="post" action="../Traitement/Traitement_deco.php">
+
+          <input type="submit" name="submit_ach" value="Deconnexion">
+
+        </form>
+
+        <?php
+
+      }
+
+      if(isset($_SESSION['type']) && $_SESSION['type']==0){//acheteur
+
+        ?>
+
+        <form method="post" action="" id="form2">
+
+          <input type="submit" name="submit_ach" value="Mes achats">
+
+        </form>
+
+        <?php
+
+      }
+
+      if(isset($_SESSION['type']) && $_SESSION['type']==1){//vendeur
+
+        ?>
+
+        <form method="post" action="" id="form3">
+
+          <input type="submit" name="submit_ach" value="Mes ventes">
+
+        </form>
+
+        <?php
+
+      }
+
+      if(isset($_SESSION['admin']) && $_SESSION['admin']==1){//admin
+
+        ?>
+
+        <form method="post" action="" id="form1">
+
+          <input type="submit" name="submit_ach" value="Administration">
+
+        </form>
+
+        <?php
+
+      }
+
+      ?>
+
+      <?php
+
+      if(isset($_SESSION['ID']) && $_SESSION['type']==0 && $_SESSION['admin']==0){//ach
+
+        ?>
+
+        <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+
+        <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
+
+        <?php
+
+      }else if(isset($_SESSION['ID']) && $_SESSION['type']==1&& $_SESSION['admin']==0){//Vendeur
+
+        ?>
+
+        <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+
+        <?php
+
+      }if(isset($_SESSION['ID']) && $_SESSION['admin']==1){//admin
+
+        ?>
+
+        <a href="Profil_Admin.php"><img height="27" src="../Images/ImgAcoountConnexionAdmin.jpg" alt="" hspace="0"></a>
+
+        <?php
+
+      }if(!isset($_SESSION['ID'])){
+
+        ?>
+
+        <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
+
+        <?php
+
+      }
+
+      ?>
+
+    </div>    
+
+  </div>      
      <br> <br><br>  <br>
 
     <body class="col">
