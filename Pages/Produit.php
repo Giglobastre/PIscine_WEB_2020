@@ -95,18 +95,16 @@ if(isset($_SESSION['ID'])){
   </div>       
   <br />     
   
-  <div style="padding-left:30px">
+  <div id="description" style="float : cneter">
       <div>
       <center>
            <h2>Catégories de produits</h2>
             Tous nos produits sont classés en 3 catégories.<br/>
             Cliquez sur l'une d'elles pour accéder à la page correspondante :
           <br/>
-          <div id="description">
             <a href="ProduitFerraille.php">Ferraille ou trésors<br /></a>
             <a href="ProduitMus%C3%A9e.php">Bon pour le musée<br /></a>
             <a href="ProduitVIP.php">Accessoire VIP<br /></a>
-          </div>
       </center>
       <div  style="padding-left:430px">
     <meta charset="utf-8">
@@ -152,7 +150,7 @@ if(isset($_SESSION['ID'])){
         <?php } ?>
     </div>
   </div>
-    
+    <br /><br /><br /><br /><br />
 <div id="footer">
   Copyright &copy; 2020; 
   Clément Viéville - Hugo Teinturier - Kenny Huber

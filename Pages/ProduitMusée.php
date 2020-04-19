@@ -98,8 +98,55 @@ if(isset($_SESSION['ID'])){
     <h2><b>Catégories Bon pour le Musée</b></h2>
     <img border="0" src="../Images/pub3.JPG"  height="180" width="500">
 
-    <h2>Objets récements consultés</h2>
-  </div>
+      <h3>Objets appartenant à la catégorie Bon pour le Musée</h3>
+    </div>
+    
+        <?php
+        try{
+          $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
+        }
+        catch (Exception $e){
+          die('Erreur : ' . $e->getMessage());
+        }
+        $req = $bdd->prepare('SELECT ID,Nom, Photo1_nom, Photo1_extension, Prix, Description, Catégorie FROM objets WHERE Catégorie=2 ORDER BY ID DESC'); //ajouter LIMIT poour en prendre qu'un certain nombre & order bypour que ce soit les dernieres
+        $req->execute();
+        ?><div id="derniersobj"><?php
+        //$r=mysqli_num_rows($req);
+        $r=$req->rowCount();
+        $i=0;
+        ?><center><table><?php
+        while ($data = $req->fetch()){
+        if($i%2==0){
+          ?><tr><?php
+        }
+        ?><td><?php
+        echo '<div id="objet">
+        <center>
+        <h3><b>'.$data['Nom'].'</b></h3>
+        <form method="post" action="objet.php">
+        <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+        <input type="image" height=200 src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"/>
+        </form>
+        <form method="post" action="../Traitement/Traitement_favoris.php">
+        <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+        <p><span style="border: 1px solid grey;" id="Description">'.$data['Description'].'</span></span></p>
+        <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
+        </form>        
+        </center>
+        </div>
+        </td>
+        ';
+        $i++;
+        if($i%2==0){
+          ?></tr><?php
+        }
+        if($i%2!=0 && $i==$r){
+          ?></tr><?php
+        }
+        }
+        ?></table></center><?php
+        $req->closeCursor();
+        ?>
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
   <div id="footer">
     Copyright &copy; 2020;
