@@ -110,7 +110,6 @@ $_SESSION['CAT']=0;
     while ($data = $req->fetch()){
     //changer tout le echo comme les if ?  la ou pas de variabless par ex pour afficher les images que si elles sont set et la video aussi
       $_SESSION['CAT']=$data['Catégorie'];
-      
       echo '<div id="myCarousel" class="carousel slide" data-ride="carousel">
       <center>
       <h2><b>'.$data['Nom'].'</b></h2>              
