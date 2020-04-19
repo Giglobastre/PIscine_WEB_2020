@@ -1,10 +1,30 @@
 <?php 
 session_start();
 $_SESSION['Test']=0;
+
+try{
+  $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
+}
+catch (Exception $e){
+  die('Erreur : ' . $e->getMessage());
+}
+
+if(isset($_SESSION['ID'])){
+  $req15=$bdd->prepare('SELECT Photo_nom, Photo_extension, Background_nom, Background_extension FROM utilisateurs WHERE ID="'.$_SESSION['ID'].'"');
+  $req15->execute();
+  while ($data = $req15->fetch()){
+    if(isset($data['Photo_nom']) && isset($data['Photo_extension'])){
+      $PP="../Profil/".$data['Photo_nom'].".".$data['Photo_extension'];
+    }
+    if(isset($data['Background_nom']) && isset($data['Background_extension'])){
+      $BG="../Profil/".$data['Background_nom'].".".$data['Background_extension'];
+    }
+  }
+}
 ?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +35,12 @@ $_SESSION['Test']=0;
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 </head>
 <body>
+
+  <style type="text/css">
+    <?php if(isset($BG)){ 
+      ?>body{background-image: url("<?php echo $BG; ?>");}<?php
+    } ?>
+  </style>
 
   <div id="header">
     <img src="../Images/logo%20Ebay%20ECE.JPG" height="40" width="160"> 
@@ -27,42 +53,24 @@ $_SESSION['Test']=0;
       <a href="negociations.php">Négociation</a>
       <a href="Contact.php">Contact</a>
       <a href="about.php">A propos d'ECEbay</a>
-    </div>
-    <div style="float:right" id="boutons">
-      <?php
-      if(isset($_SESSION['ID'])){
-        ?>
-        <form method="post" action="../Traitement/Traitement_deco.php">
-          <input type="submit" name="submit_ach" value="Deconnexion">
-        </form>
+      <?php if(isset($_SESSION['type']) && $_SESSION['type']==1){ ?>
+        <a href="nv_obj.php">Mettre en vente un objet</a>
+        <?php } ?>
+      </div>
+      <div style="float:right" id="boutons">
         <?php
-      }
-      if(isset($_SESSION['type']) && $_SESSION['type']==0){//acheteur
+        if(isset($_SESSION['ID'])){
+          ?>
+          <form method="post" action="../Traitement/Traitement_deco.php">
+            <input type="submit" name="submit_ach" value="Deconnexion">
+          </form>
+          <?php
+        }
         ?>
-        <form method="post" action="" id="form2">
-          <input type="submit" name="submit_ach" value="Mes achats">
-        </form>
         <?php
-      }
-      if(isset($_SESSION['type']) && $_SESSION['type']==1){//vendeur
-        ?>
-        <form method="post" action="" id="form3">
-          <input type="submit" name="submit_ach" value="Mes ventes">
-        </form>
-        <?php
-      }
-      if(isset($_SESSION['admin']) && $_SESSION['admin']==1){//admin
-        ?>
-        <form method="post" action="" id="form1">
-          <input type="submit" name="submit_ach" value="Administration">
-        </form>
-        <?php
-      }
-      ?>
-      <?php
       if(isset($_SESSION['ID']) && $_SESSION['type']==0 && $_SESSION['admin']==0){//ach
         ?>
-        <a href="Profil_Acheteur.php"><p>Ma page</p><img height="27" src="../Images/ImgAcoountConnexion.jpg" alt="" hspace="0"></a>
+        <a href="Profil_Acheteur.php"><p>Mon compte</p><img height="27" src="<?php echo $PP; ?>" alt="" hspace="0"></a>
         <a href="Panier.php"><img height="27" src="../Images/Panier.png" alt="" hspace="0"></a>
         <?php
       }else if(isset($_SESSION['ID']) && $_SESSION['type']==1&& $_SESSION['admin']==0){//Vendeur
@@ -79,7 +87,7 @@ $_SESSION['Test']=0;
         <?php
       }
       ?>
-    </div>    
+    </div>
   </div>       
   <br />
 
@@ -163,7 +171,9 @@ $_SESSION['Test']=0;
 
   <div>
     <div>
+      <?php if(isset($_SESSION['ID'])){ ?>
       <h2><b>Objets récements consultés</b></h2>
+    <?php } ?>
     </div>
 
     <?php
@@ -174,6 +184,7 @@ $_SESSION['Test']=0;
       die('Erreur : ' . $e->getMessage());
     }
     //requete pour recuperer le type dernier vu
+    if(isset($_SESSION['ID'])){
     $req100=$bdd->prepare('SELECT Type_derniervu FROM utilisateurs WHERE ID="'.$_SESSION['ID'].'"');
     $req100->execute();
     while ($data100 = $req100->fetch()){
@@ -216,9 +227,9 @@ $_SESSION['Test']=0;
       }
     }
     ?></table></center><?php
-    $req->closeCursor();
+    $req100->closeCursor();
+  }
     ?>
-
   </div>
 
   <div>
