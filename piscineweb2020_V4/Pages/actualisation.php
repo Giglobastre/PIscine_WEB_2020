@@ -37,7 +37,7 @@
 		$req5->closeCursor();
 	}
 	$req4->closeCursor();
-	//header('location: index.php')
+	header('location: index.php')
 	?>
 </body>
 </html>
