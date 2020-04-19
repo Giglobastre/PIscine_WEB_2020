@@ -16,13 +16,13 @@
         
         <div class="topnav">
             <div style="float:left">
-          <a class="active" href="HomePage.html">Home</a>
-          <a href="news.html">News</a>
+          <a class="active" href="HomePage.html">Menu</a>
           <a href="produit.html">Produit</a>
+          <a href="negociations.php">Négociation</a>
           <a href="client.html">Client</a>
           <a href="panier.html">Mon panier</a>
           <a href="contact.html">Contact</a>
-          <a href="about.html">About</a>
+          <a href="about.html">A propos d'ECEbay</a>
          </div>
             <div style="float:right">
              

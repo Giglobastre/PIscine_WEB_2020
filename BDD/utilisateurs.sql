@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 15 avr. 2020 à 10:21
+-- Généré le :  Dim 12 avr. 2020 à 13:31
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -44,22 +44,17 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `MDP` varchar(255) NOT NULL,
   `Type` tinyint(1) NOT NULL DEFAULT 0,
   `Admin` tinyint(1) NOT NULL DEFAULT 0,
-  `Photo_nom` varchar(255) DEFAULT NULL,
-  `Photo_extension` varchar(255) DEFAULT NULL,
-  `Background_nom` varchar(255) DEFAULT NULL,
-  `Background_extension` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`ID`, `Nom`, `Prenom`, `Pseudo`, `Mail`, `Adresse1`, `Adresse2`, `Ville`, `Code_postal`, `Pays`, `Tel`, `MDP`, `Type`, `Admin`, `Photo_nom`, `Photo_extension`, `Background_nom`, `Background_extension`) VALUES
-(1, 'Teinturier', 'Hugo', 'Hugo_T', 'hugo.teinturier@edu.ece.fr', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 1, 1, NULL, NULL, NULL, NULL),
-(2, 'Vieville', 'Clement', 'Wmb', 'clement.vieville@edu.ece.fr', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 1, 1, NULL, NULL, NULL, NULL),
-(3, 'Huber', 'Kenny', 'Giglobastre', 'kenny.huber@edu.ece.fr', '118 rue de la croix nivert', NULL, 'paris', 75015, 'france', '+33637705226', 'admin', 1, 1, NULL, NULL, NULL, NULL),
-(4, 'uher', 'sedcze', 'koiko', 'ekkef.vervre@frrfg/rg', NULL, NULL, NULL, NULL, NULL, NULL, 'er', 0, 0, NULL, NULL, NULL, NULL);
+INSERT INTO `utilisateurs` (`ID`, `Nom`, `Prenom`, `Pseudo`, `Mail`, `Adresse1`, `Adresse2`, `Ville`, `Code_postal`, `Pays`, `Tel`, `MDP`, `Type`, `Admin`) VALUES
+(1, 'Teinturier', 'Hugo', 'Hugo_T', 'hugo.teinturier@edu.ece.fr', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 1, 1),
+(2, 'Vieville', 'Clement', 'Wmb', 'clement.vieville@edu.ece.fr', NULL, NULL, NULL, NULL, NULL, NULL, 'admin', 1, 1),
+(3, 'Huber', 'Kenny', 'Giglobastre', 'kenny.huber@edu.ece.fr', '118 rue de la croix nivert', NULL, 'paris', 75015, 'france', '+33637705226', 'admin', 1, 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

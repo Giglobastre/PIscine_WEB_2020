@@ -21,11 +21,11 @@ session_start();
 
 	<div class="topnav">
 		<div style="float:left">
-			<a class="active" href="index.php">Home</a>
-			<a href="news.php">News</a>
+			<a class="active" href="index.php">Menu</a>
 			<a href="Produit.php">Produit</a>
+            <a href="negociations.php">Négociation</a>
 			<a href="Contact.php">Contact</a>
-			<a href="about.php">About</a>
+			<a href="about.php">A propos d'ECEbay</a>
 		</div>
 		<div style="float:right">
 			<?php

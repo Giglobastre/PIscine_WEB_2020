@@ -1,9 +1,9 @@
 <?php 
 session_start();
 
-$_SESSION['ID_Objet']=1;///a recuperer formulaire
-$_SESSION['ID_Client']=1;//varibale de ssesion
-$prixdonne=7002; ///a recuperer par formulaire
+$_SESSION['ID_Objet']=$_POST['ID_obj'];///a recuperer formulaire
+$_SESSION['ID'];//varibale de ssesion
+$prixdonne=$_POST['prixdonne']; ///a recuperer par formulaire
 $ID_chg=0;
 
 $nvprix=0;
@@ -17,12 +17,12 @@ $condition=0;
 try{
 	$bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
 
-	$req = $bdd->prepare("SELECT ID,Methode_vente,Prix FROM objets WHERE ID='".$_SESSION['ID_Objet']."'"); 
+	$req = $bdd->prepare("SELECT ID,Methode_vente,Prix FROM objets WHERE ID='".$_SESSION['ID_Objet']."'"); ///cherche dans objet
 	$req->execute();
 	echo("kkk");
 	while ($data = $req->fetch()){
 
-		if($data['ID']==$_SESSION['ID_Objet'])
+		if($data['ID']==$_SESSION['ID_Objet']) ///bon objet
 		{
 			echo '<h3>'.$data['Methode_vente'].'</h3>';
 			$prixbase=$data['Prix'];
@@ -31,9 +31,9 @@ try{
 
 				if($data['Prix']<$prixdonne)
 				{
-					$req3 = $bdd->prepare("SELECT Prix_max,ID_Client FROM panier WHERE ID_Objet='".$_SESSION['ID_Objet']."'");
+					$req3 = $bdd->prepare("SELECT Prix_max,ID_Client,ID_transac FROM panier WHERE ID_Objet='".$_SESSION['ID_Objet']."'");
 					$req3->execute();
-					echo ("prix donne");
+					echo ("prix donne"); ///cherche si il y a deja des offres existantes
 					echo $prixdonne;
 					
 					while ($data = $req3->fetch())
@@ -42,7 +42,7 @@ try{
 						if($data['Prix_max']>$prixmax)
 						{
 							$ID_chg=$data['ID_Client'];
-							$prixmax=$data['Prix_max'];
+							$prixmax=$data['Prix_max']; ///cherche prix max dans panier
 							echo("prixmax");
 							echo $prixmax;
 						}
@@ -53,7 +53,7 @@ try{
 					{
 						$nvprix=$prixbase;
 						$req7 = $bdd->prepare('INSERT INTO panier (ID_Client,ID_Objet,Prix_max,Acquereur) VALUES(?,?,?,?)');
-						$req7->execute(array($_SESSION['ID_Client'],$_SESSION['ID_Objet'],$prixdonne,TRUE));
+						$req7->execute(array($_SESSION['ID'],$_SESSION['ID_Objet'],$prixdonne,TRUE));
 						$req7->closeCursor();
 					}
 					else
@@ -64,12 +64,10 @@ try{
 						{
 							echo("huhu");
 							echo $ID_chg;
-							$req5 = $bdd->prepare("UPDATE panier SET Acquereur= TRUE WHERE ID_Client='".$ID_chg."'"); 
-							$req5->execute();
-							$req5->closeCursor();;
+							
 							$nvprix=$prixdonne+1;
 							$req4 = $bdd->prepare('INSERT INTO panier (ID_Client,ID_Objet,Prix_max) VALUES(?,?,?)');
-							$req4->execute(array($_SESSION['ID_Client'],$_SESSION['ID_Objet'],$prixdonne));
+							$req4->execute(array($_SESSION['ID'],$_SESSION['ID_Objet'],$prixdonne));
 							$req4->closeCursor();
 
 						}
@@ -84,7 +82,7 @@ try{
 							
 							echo("mm");
 							$req8 = $bdd->prepare('INSERT INTO panier (ID_Client,ID_Objet,Prix_max,Acquereur) VALUES(?,?,?,?)');
-							$req8->execute(array($_SESSION['ID_Client'],$_SESSION['ID_Objet'],$prixdonne,TRUE));
+							$req8->execute(array($_SESSION['ID'],$_SESSION['ID_Objet'],$prixdonne,TRUE));
 							$req8->closeCursor();
 						}
 						
@@ -92,8 +90,9 @@ try{
 					}
 					echo("nvprix");
 					echo $nvprix;
+					echo $_SESSION['ID_Objet'];
 
-					$req2 = $bdd->prepare('UPDATE objets SET Prix= $nvprix WHERE ID="'.$_SESSION['ID_Objet'].'"'); 
+					$req2 = $bdd->prepare('UPDATE objets SET Prix= "'.$nvprix.'" WHERE ID="'.$_SESSION['ID_Objet'].'"'); 
 					$req2->execute();
 					$req2->closeCursor();;
 					echo("j"); 
@@ -114,9 +113,7 @@ try{
 		}
 	}
 
-
-
-
+	header('location: ../Pages/index.php');
 	$req->closeCursor();;
 }
 catch (Exception $e){

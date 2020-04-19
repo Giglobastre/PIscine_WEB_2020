@@ -1,20 +1,60 @@
-
 #header{
   background-color: white;
   color: right;
   text-align: center;
   padding: 5px;
 }
-body 
-{
-  margin: 30;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-form
-{
-  text-align: center;
-}
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ }
+form {
+ background-color:#FAFAFA;
+ padding:10px;
+ width:280px;
+ }
+fieldset {
+ padding:0 20px 20px 20px;
+ margin-bottom:10px;
+ border:1px solid green;
+ }
+legend {
+ color:green;
+ font-weight:bold
+ }
+label {
+ margin-top:10px;
+ display:block;
+ }
+label.inline {
+ display:inline;
+ margin-right:50px;
+ }
+input, textarea, select, option {
+ background-color:transparent;
+ }
+input, textarea, select {
+ padding:3px;
+ border:1px solid black;
+ border-radius:5px;
+ width:200px;
+ box-shadow:1px 1px 2px #C0C0C0 inset;
+ }
+select {
+ margin-top:10px;
+ }
+input[type=radio] {
+ background-color:transparent;
+ border:none;
+ width:10px;
+ }
+input[type=submit], input[type=reset] {
+ width:100px;
+ margin-left:5px;
+ box-shadow:1px 1px 1px grey;
+ cursor:pointer;
+ }
+
 
 .topnav {
   overflow: hidden;
@@ -46,7 +86,3 @@ form
  text-align: center;
  padding: 5px;
 }   
-
-#recents{
-   padding-left:30px;
-}

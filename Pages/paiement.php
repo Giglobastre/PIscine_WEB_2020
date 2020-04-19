@@ -9,7 +9,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="icon" type="image/jpg" href="../Images/logo%20Ebay%20ECE.JPG" />
-  <link rel="stylesheet" type="text/css" href="../Style/Style_about.css">
+  <link rel="stylesheet" type="text/css" href="../Style/Style_index.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 </head>
@@ -21,11 +21,11 @@ session_start();
   
   <div class="topnav">
     <div style="float:left">
-      <a href="index.php">Menu</a>
+      <a class="active" href="index.php">Menu</a>
       <a href="Produit.php">Produit</a>
       <a href="negociations.php">Négociation</a>
       <a href="Contact.php">Contact</a>
-      <a class="active" href="about.php">A propos d'ECEbay</a>
+      <a href="about.php">A propos d'ECEbay</a>
     </div>
     <div style="float:right">
 
@@ -80,31 +80,47 @@ session_start();
       }
       ?>
     </div>    
-  </div>    
-  
-  <center >
+  </div>   
+<br> <br> <br> 
+    <center >
+    <form class="form" action="../Traitement/Traitement_paiement.php" method="POST">
+        <table >
+            <tr>
+            <td >Nom sur la carte</td>
+            <td> <input type="text" name="nom"></td>
+        </tr>
+        <tr>
+            <td >Prenom sur la carte </td>
+            <td> <input type="text" name="prenom"></td>
+        </tr>
+        <tr>
+            <td >Numero de carte</td>
+            <td> <input type="text" name="numero"></td>
+        </tr>
+        <tr>
+            <td> Date expiration </td>
+            <td> <input type="text" name="date"></td>
+        </tr>
 
-  <div style="center">
-    <br>
-          <h2><b>Où nous trouver ?</b></h2>
-      <br>
-      
-      <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1q82HZGzwVrvuXA-VAAbYvBICtKYWsIcV" width="640" height="480"></iframe>    
+        <tr>
+            <td >CVV </td>
+            <td> <input type="password" name="cvv"></td>
+        </tr>
         
-      <br>
-        <h2>Les Créateurs d'ECEbay..</h2>
-      <br>
-      <br>
-      <a href="../Images/Le_crateurs.PNG"><img src="../Images/Le_crateurs.PNG" height=250></a>
-      <p>Nous sommes 3 élèves ingénieurs de l'<b>ECE Paris</b>.</p>
-  </div>
+        <tr>
+        </tr>
+        <tr>
+        <p><input type="radio" name="type" value="1" checked> Visa <input type="radio" name="type" value="0" > American express<input type="radio" name="type" value="3" > Mastercard</p><input type="radio" name="type" value="4" > Paypal</p>
+    </tr>
+        <tr>
+            <td></td>
+            <td><button  type="submit" name="button1" value="submit">Valider</button></td>
+        </tr>
+    </table>
+    </form>
 
-      <br><br>
-      
-  <div id="footer">
-    Copyright &copy; 2020; 
-    Clément Viéville - Hugo Teinturier - Kenny Huber
-  </div>
-    
+</center>
+
 </body>
+
 </html>

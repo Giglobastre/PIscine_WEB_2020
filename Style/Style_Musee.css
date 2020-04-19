@@ -1,13 +1,14 @@
+
 #header{
   background-color: white;
   color: right;
   text-align: center;
   padding: 5px;
 }
-
 body 
 {
   margin: 0;
+  background-image: url("../Images/Musee.PNG");
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -27,7 +28,7 @@ body
 
 .topnav a:hover {
   background-color: #ddd; 
-  color: black; 
+  color: black;
 }
 
 .topnav a.active {
@@ -40,21 +41,8 @@ body
  clear: both;
  text-align: center;
  padding: 5px;
-}
+}   
 
-/*CSS POUR LES FORMULAIRES*/
-#paiement, #Mon_profil{
-  height: 0;
-  overflow: hidden;
-  transition: height 1.5s;
-}
-#paiement{
-  height: 20%;
-}
-#Mon_profil{
-  height: 20%
-}
-label{
-  display: flex;
-  flex-direction: column;
+#recents{
+   padding-left:30px;
 }

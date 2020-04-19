@@ -1,13 +1,10 @@
-<?php 
-  session_start();
-?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Connexion</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../Styles/Style_connexion.css" />
+    <link rel="stylesheet" type="text/css" href="../Style/Style_connexion.css" />
 
 
 </head>
@@ -18,18 +15,17 @@
 
 
     <div id="header">
-      <img src="logo.JFIF" height="50" width="220"> 
+      <img src="../Images/logo%20Ebay%20ECE.JPG" height="50" width="220"> 
   </div>
 
   <div class="topnav">
     <div style="float:left">
-      <a class="active" href="HomePage.html">Home</a>
-      <a href="news.html">News</a>
+      <a class="active" href="HomePage.html">Menu</a>
       <a href="produit.html">Produit</a>
-      <a href="client.html">Client</a>
+      <a href="negociations.php">Négociation</a>
       <a href="panier.html">Mon panier</a>
       <a href="contact.html">Contact</a>
-      <a href="about.html">About</a>
+      <a href="about.html">A propos d'ECEbay</a>
   </div>
   <div style="float:right">
 
@@ -70,6 +66,7 @@
                 <td> <input type="password" name="mdp2"></td>
             </tr>
             <tr>
+              <p><input type="radio" name="type" value="1" > Vendeur <input type="radio" name="type" value="0" checked> Acheteur</p>
             </tr>
             <tr>
                 <td></td>

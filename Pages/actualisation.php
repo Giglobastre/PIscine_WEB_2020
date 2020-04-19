@@ -16,17 +16,13 @@
 		if($data['Methode_vente']==0){//enchere
 			$heureobj=substr($data['Date_obj'],11,2);//heure
 			$jourobj=substr($data['Date_obj'],8,2);//jour
-			echo $heureobj;
-			echo "       ";
-			echo $jourobj;
-			echo "       ";
 			$heureact=date('H');
 			$jouract=date('j');
 			if($heureobj==$heureact && $jouract==$jourobj+3){//3j d'enchere = fin
 				$req2 = $bdd->query('SELECT ID_transac FROM panier WHERE ID_objet="'.$data['ID'].'" AND Acquereur=1');
 				while ($data2 = $req->fetch()){
 					//envvoyer le mail en mettant +x jours pour la livraison
-					$req3 = $bdd->query('DELETE FROM objet WHERE ID_objet="'.$data2['ID'].'" AND Acquereur=1');
+					$req3 = $bdd->query('DELETE FROM objets WHERE ID_objet="'.$data2['ID'].'" AND Acquereur=1');
 					$req3->closeCursor();
 				}
 				$req2->closeCursor();

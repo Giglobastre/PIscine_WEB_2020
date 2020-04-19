@@ -1,8 +1,9 @@
 body 
 {
-  margin: 0;
+  margin: 30;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 #header{
   background-color: white;
   color: right;
@@ -36,15 +37,4 @@ body
  text-align: center;
  padding: 5px;
 }
-/*CSS POUR AFFICHAGE OBJET*/
-#imgobj{
-  max-width: 17%;
-  max-height: 17%;
-  float: left;
-}
-#divimgobj{
-  float: left;
-  border: solid green 1px;
-  display: flex;
-  flex-direction: column;;
-}
+
