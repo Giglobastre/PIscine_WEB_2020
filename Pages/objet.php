@@ -167,7 +167,7 @@ if(isset($_SESSION['ID'])){
           <input type="hidden" name="ID_obj" value="<?php echo $data['ID'];?>">
           <input type="hidden" name="ID_ach" value="<?php echo $_SESSION['ID'];?>">
           <label for="prixdonne">Montant maximum : </label><input type="text" name="prixdonne">
-          <input type="submit" name="submit" Value="Particper a l'enchère">
+          <input type="submit" name="submit" Value="Participer à l'enchère">
         </form>
       </center>
       <?php
