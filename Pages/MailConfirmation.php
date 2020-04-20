@@ -1,7 +1,47 @@
-<?php 
+<?php
+
 session_start();
 $_SESSION['Test']=0;
 
+$mail=0;
+$header="MIME-Version: 1.0\r\n";
+$header.='From: "ECEbay confirmation de votre commande"<support@gmail.com>'."\n";
+$header.='Content-Type:text/html; charset="uft-8"'."\n";
+$header.='Content-Transfer-Encoding: 8bit';
+$bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
+$req6= $bdd->prepare("SELECT ID,Mail, FROM utilisateurs WHERE ID='".$_SESSION['ID']."'"); 
+$req6->execute();
+while ($data = $req6->fetch()){
+    $mail=$data['Mail'];
+}
+$req6->closeCursor();;
+$req5= $bdd->prepare("SELECT ID_Client,ID_Objet,Acquereur,ID_transac,Prix_max,Nom FROM panier"); 
+$req5->execute();
+while ($data = $req5->fetch()){
+    if(($data['ID_Client']==$_SESSION['ID'])&&($data['Acquereur']==4))
+    {
+        $message='
+        <html>
+        <body>
+        <div align="center">
+        <br />
+        <a>Voici votre bon de commande d\'un montant de :</a>
+        <td>'.$data['Prix_max'].'€.</td>
+        <td>'.$data['Nom'].'</td>
+        <br />
+        </div>
+        </body>
+        </html>
+        ';?>			
+    <?php
+    }   
+}
+mail($mail, "ECEbay confirmation de votre commande", $message, $header);
+$msg="Votre message a bien été envoyé !";
+
+?>
+
+<?php
 try{
   $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
 }
@@ -26,12 +66,11 @@ if(isset($_SESSION['ID'])){
 <!DOCTYPE html>
 <html>
 <head>
-     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="icon" type="image/jpg" href="../Images/logo%20Ebay%20ECE.JPG" />
-  <link rel="stylesheet" type="text/css" href="../Style/Style_index.css">
+  <link rel="stylesheet" type="text/css" href="../Style/Style_contact.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
 </head>
@@ -49,10 +88,10 @@ if(isset($_SESSION['ID'])){
   
   <div class="topnav">
     <div style="float:left">
-      <a class="active" href="index.php">Menu</a>
+      <a href="index.php">Menu</a>
       <a href="Produit.php">Produit</a>
       <a href="negociations.php">Négociation</a>
-      <a href="Contact.php">Contact</a>
+      <a class="active" href="Contact.php">Contact</a>
       <a href="about.php">A propos d'ECEbay</a>
       <?php if(isset($_SESSION['type']) && $_SESSION['type']==1){ ?>
         <a href="nv_obj.php">Mettre en vente un objet</a>
@@ -91,94 +130,15 @@ if(isset($_SESSION['ID'])){
         <a href="connexion.php"><img height="27" src="../Images/ImgAcoountSeConnecter.jpg" alt="" hspace="0"></a>
         <?php
       }
-
-      $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
-      $req6 = $bdd->prepare("SELECT ID_client FROM cb_client "); 
-      $req6->execute();
-
-      while ($data = $req6->fetch()){
-        if($data['ID_client']==$_SESSION['ID'])
-        {
-          $condition=1;
-
-          $req6 = $bdd->prepare("SELECT ID_Objet FROM panier WHERE Acquereur=3 AND ID_Client='".$_SESSION['ID']."'"); 
-          $req6->execute();
-          while ($data = $req6->fetch()){
-            $req15 = $bdd->query('DELETE FROM objets WHERE ID="'.$data['ID_Objet'].'"');
-            $req15->closeCursor();
-          }
-
-          $req5 = $bdd->prepare("UPDATE panier SET Acquereur= 4 WHERE Acquereur=3 AND ID_Client='".$_SESSION['ID']."'" );
-          $req5->execute();
-          $req5->closeCursor();;
-          header('location: ../Pages/MailConfirmation.php');
-        }
-      }
-
       ?>
-    </div>    
-  </div>   
-  <br> <br> <br> 
-  <center >
-    <form class="form" action="../Traitement/Traitement_paiement.php" method="POST">
-      <table >
-        <tr>
-          <td >Nom sur la carte</td>
-          <td> <input type="text" name="nom"></td>
-        </tr>
-        <tr>
-          <td >Prenom sur la carte </td>
-          <td> <input type="text" name="prenom"></td>
-        </tr>
-        <tr>
-          <td >Numero de carte</td>
-          <td> <input type="text" name="numero"></td>
-        </tr>
-        <tr>
-          <td> Date expiration </td>
-          <td> <input type="text" name="date"></td>
-        </tr>
+    </div>
+  </div>       
+  <br /> <br><br><br> <br><br> <br> <br><br> <br> <br><br> <br> <br> 
 
-        <tr>
-          <td >CVV </td>
-          <td> <input type="password" name="cvv"></td>
-        </tr>
+  <div id="footer">
+    Copyright &copy; 2020; 
+    Clément Viéville - Hugo Teinturier - Kenny Huber
+  </div>
         
-        <tr>
-        </tr>
-        <tr>
-          <p><input type="radio" name="type" value="1" checked> Visa <input type="radio" name="type" value="0" > American express<input type="radio" name="type" value="3" > Mastercard</p><input type="radio" name="type" value="4" > Paypal</p>
-        </tr>
-        <tr>
-          <td></td>
-
-      <div class="g-recaptcha" data-sitekey="6LdydOsUAAAAADa_QNiVVPb4uM81sl3WRViey2rr"></div>
-    </form>
-          <td><button  type="submit" name="button1" value="submit">Valider</button></td>
-        </tr>
-        <?php
-        if($_SESSION['Test']==1)
-          {?>
-            <tr>
-              <td>Veuillez remplir tous les champs</td>
-              </tr><?php
-            }?><?php
-            if($_SESSION['Test']==2)
-              {?>
-                <tr>
-                  <td>Carte inexistante</td>
-                  </tr><?php
-                }
-
-                $_SESSION['Test']=0;?>
-
-
-
-              </table>
-            </form>
-
-          </center>
-
-        </body>
-
-        </html>
+  </body>
+</html>
