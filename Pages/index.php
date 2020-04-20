@@ -139,7 +139,7 @@ if(isset($_SESSION['ID'])){
             ?><tr><?php
           }
           ?><td><?php
-          echo '<div id="objet">
+          echo '
           <center>
           <h3><b>'.$data['Nom'].'</b></h3>
           <form method="post" action="objet.php">
@@ -152,7 +152,6 @@ if(isset($_SESSION['ID'])){
           <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
           </form>        
           </center>
-          </div>
           </td>
           ';
           $i++;
