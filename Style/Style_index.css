@@ -24,6 +24,17 @@
   width: 5%;
   height: 5%
 }
+
+td{
+  width: 40%;
+}
+tr{
+  width: 100%;
+}
+table{
+  width: 100%
+}
+
 body 
 {
   margin: 0px;
