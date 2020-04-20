@@ -83,7 +83,7 @@ if(isset($_SESSION['ID'])){
         <?php
       }if(isset($_SESSION['ID']) && $_SESSION['admin']==1){//admin
         ?>
-        <a href="Profil_Admin.php"><img height="27" src="../Images/ImgAcoountConnexionAdmin.jpg" alt="" hspace="0"></a>
+        <a href="Profil_Admin.php"><img height="27" src="../Images/ImgAcoountConnexion.PNG" alt="" hspace="0"></a>
         <?php
       }if(!isset($_SESSION['ID'])){
         ?>

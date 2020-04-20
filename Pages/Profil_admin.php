@@ -83,7 +83,7 @@ if(isset($_SESSION['ID'])){
         <?php
       }if(isset($_SESSION['ID']) && $_SESSION['admin']==1){//admin
         ?>
-        <a href="Profil_Admin.php"><img height="27" src="../Images/ImgAcoountConnexionAdmin.jpg" alt="" hspace="0"></a>
+        <a href="Profil_Admin.php"><img height="27" src="../Images/ImgAcoountConnexion.PNG" alt="" hspace="0"></a>
         <?php
       }if(!isset($_SESSION['ID'])){
         ?>
@@ -94,15 +94,6 @@ if(isset($_SESSION['ID'])){
     </div>
   </div>       
   <br />  
-<div style="padding-left:30px">
-	<div id="searchbar">                
-		<h2>Que voulez-vous rechercher ?</h2>
-		<form action="" class="formulaire">
-			<input class="champ" type="text" placeholder="ECEbay Search.."/>
-			<input class="bouton" type="button" value="Rechercher" />         
-		</form>
-	</div>
-</div>
 <center><h2>Votre compte</h2></center>
 <center><button id="bouton1">Mes informations</button> <button id="bouton2">Ventes</button> <button id="bouton3">Personalisation du site</button> <button id="bouton4">Vendeurs</button></center>
 <center>

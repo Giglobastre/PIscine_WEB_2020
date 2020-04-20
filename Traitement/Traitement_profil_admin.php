@@ -22,12 +22,12 @@ session_start();
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Adresse2=".$_POST['adresse2'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}else{
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}
 	}if(!empty($_POST['adresse1']) && !empty($_POST['ville']) && !empty($_POST['pays']) && !empty($_POST['cp']) && !empty($_POST['tel'])
 		&& !empty($_POST['pseudo'])
@@ -36,12 +36,12 @@ session_start();
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Adresse2=".$_POST['adresse2'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel'].", Pseudo=".$_POST['pseudo']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}else{
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel'].", Pseudo=".$_POST['pseudo']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}
 	}if(!empty($_POST['adresse1']) && !empty($_POST['ville']) && !empty($_POST['pays']) && !empty($_POST['cp']) && !empty($_POST['tel'])
 		&& !empty($_POST['pseudo'])
@@ -50,12 +50,12 @@ session_start();
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Adresse2=".$_POST['adresse2'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel'].", Pseudo=".$_POST['pseudo'].", MDP=".$_POST['mdp']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}else{
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel'].", Pseudo=".$_POST['pseudo'].", MDP=".$_POST['mdp']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}
 	}if(!empty($_POST['adresse1']) && !empty($_POST['ville']) && !empty($_POST['pays']) && !empty($_POST['cp']) && !empty($_POST['tel'])
 		&& empty($_POST['pseudo'])
@@ -64,12 +64,12 @@ session_start();
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Adresse2=".$_POST['adresse2'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel'].", MDP=".$_POST['mdp']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}else{
 			$req = $bdd->prepare("UPDATE utilisateurs SET Adresse1=".$_POST['adresse1'].", Ville=".$_POST['ville'].", Pays=".$_POST['pays'].", Code_postal=".$_POST['cp'].", Tel=".$_POST['tel'].", MDP=".$_POST['mdp']." WHERE ID=".$_SESSION['ID'].""); 
 			$req->execute();
 			$req->closeCursor();
-			header('location: ../Pages/Profil_vendeur.php');
+			header('location: ../Pages/Profil_admin.php');
 		}
 	}if(empty($_POST['adresse1']) && empty($_POST['ville']) && empty($_POST['pays']) && empty($_POST['cp']) && empty($_POST['tel'])
 		&& !empty($_POST['pseudo'])
@@ -77,21 +77,21 @@ session_start();
 		$req = $bdd->prepare("UPDATE utilisateurs SET  Pseudo=".$_POST['pseudo'].", MDP=".$_POST['mdp']." WHERE ID=".$_SESSION['ID'].""); 
 		$req->execute();
 		$req->closeCursor();
-		header('location: ../Pages/Profil_vendeur.php');
+		header('location: ../Pages/Profil_admin.php');
 	}if(empty($_POST['adresse1']) && empty($_POST['ville']) && empty($_POST['pays']) && empty($_POST['cp']) && empty($_POST['tel'])
 		&& !empty($_POST['pseudo'])
 		&& empty($_POST['mdp'])){
 		$req = $bdd->prepare("UPDATE utilisateurs SET  Pseudo=".$_POST['pseudo']." WHERE ID=".$_SESSION['ID'].""); 
 		$req->execute();
 		$req->closeCursor();
-		header('location: ../Pages/Profil_vendeur.php');
+		header('location: ../Pages/Profil_admin.php');
 	}if(empty($_POST['adresse1']) && empty($_POST['ville']) && empty($_POST['pays']) && empty($_POST['cp']) && empty($_POST['tel'])
 		&& empty($_POST['pseudo'])
 		&& !empty($_POST['mdp']) && !empty($_POST['mdpc']) && $_POST['mdp']==$_POST['mdpc']){
 		$req = $bdd->prepare("UPDATE utilisateurs SET MDP=".$_POST['mdp']." WHERE ID=".$_SESSION['ID'].""); 
 		$req->execute();
 		$req->closeCursor();
-		header('location: ../Pages/Profil_vendeur.php');
+		header('location: ../Pages/Profil_admin.php');
 	}
 	//traitement  ajout images
 	if(isset($_FILES['profil'])){
@@ -102,7 +102,7 @@ session_start();
 		$req2 = $bdd->prepare("UPDATE utilisateurs SET Photo_nom='".$nom_im."', Photo_extension='".$extensionpp."' WHERE ID='".$_SESSION['ID']."'");
 		$req2->execute();
 		$req2->closeCursor();
-		header('location: ../Pages/Profil_vendeur.php');
+		header('location: ../Pages/Profil_admin.php');
 	}if(isset($_FILES['couverture'])){
 		$nom_im="couv".$_SESSION['ID'];
 		$pathv = $_FILES['couverture']['name'];
@@ -111,21 +111,21 @@ session_start();
 		$req2 = $bdd->prepare("UPDATE utilisateurs SET Background_nom='".$nom_im."', Background_extension='".$extensioncouv."' WHERE ID='".$_SESSION['ID']."'");
 		$req2->execute();
 		$req2->closeCursor();
-		header('location: ../Pages/Profil_vendeur.php');
+		header('location: ../Pages/Profil_admin.php');
 	}
 	//traitement sup article 0 enchere 1 nego
 	if(isset($_POST['id_sup']) && isset($_POST['mv_sup']) && isset($_POST['date_sup'])){
 		$req = $bdd->prepare('DELETE FROM objets WHERE ID="'.$_POST['id_sup'].'"');
 		$req->execute();
 		$req->closeCursor();
-		header('location: ../Pages/Profil_vendeur.php');
+		header('location: ../Pages/Profil_admin.php');
 	}
 	//sup vendeur
 	if(isset($_POST['id_ven'])){
 		$req = $bdd->prepare('DELETE FROM utilisateurs WHERE ID="'.$_POST['id_ven'].'"');
 		$req->execute();
 		$req->closeCursor();
-		header('location: ../Pages/Profil_vendeur.php');
+		header('location: ../Pages/Profil_admin.php');
 	}
 	?>
 </body>

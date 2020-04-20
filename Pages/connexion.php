@@ -1,6 +1,5 @@
 <?php 
 session_start();
-$_SESSION['Test']=0;
 
 try{
   $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
@@ -110,7 +109,8 @@ if(isset($_SESSION['ID'])){
                  <td > Acheteur <input type="radio" name="type" value="0"checked> </td>
                  <td > Vendeur <input type="radio" name="type" value="1"> </td>
                  <p>
-                 <input type="submit" value="Envoyer" />
+                  <br />
+                 <input type="submit" value="S'inscrire" />
                  <input type="reset" value="Annuler" />
                  </p>
             </fieldset>
@@ -120,7 +120,8 @@ if(isset($_SESSION['ID'])){
               <input type="email" name="mail2" placeholder="Mail ">
               <input type="password" name="mdp1" placeholder="Mot de Passe">
                 <p>
-             <input type="submit" value="Envoyer" />
+                  <br />
+             <input type="submit" value="Se connecter" />
              <input type="reset" value="Annuler" />
              </p>
             </fieldset>
@@ -140,7 +141,7 @@ if(isset($_SESSION['ID'])){
 
             {
 
-              ?><td> <h4 class="place"> Mot de Passe ou email incorect</h4><?php
+              ?><td> <h4 class="place"> Mot de Passe ou email incorrect</h4><?php
 
               $_SESSION['Test']=0;
 

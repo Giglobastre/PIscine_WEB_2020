@@ -55,19 +55,19 @@ if(isset($_SESSION['ID'])){
       <a href="about.php">A propos d'ECEbay</a>
       <?php if(isset($_SESSION['type']) && $_SESSION['type']==1){ ?>
         <a href="nv_obj.php">Mettre en vente un objet</a>
-        <?php } ?>
-      </div>
-      <div style="float:right" id="boutons">
-        <?php
-        if(isset($_SESSION['ID'])){
-          ?>
-          <form method="post" action="../Traitement/Traitement_deco.php">
-            <input type="submit" name="submit_ach" value="Deconnexion">
-          </form>
-          <?php
-        }
+      <?php } ?>
+    </div>
+    <div style="float:right" id="boutons">
+      <?php
+      if(isset($_SESSION['ID'])){
         ?>
+        <form method="post" action="../Traitement/Traitement_deco.php">
+          <input type="submit" name="submit_ach" value="Deconnexion">
+        </form>
         <?php
+      }
+      ?>
+      <?php
       if(isset($_SESSION['ID']) && $_SESSION['type']==0 && $_SESSION['admin']==0){//ach
         ?>
         <?php if(isset($PP)) { ?>
@@ -96,45 +96,52 @@ if(isset($_SESSION['ID'])){
   <br />     
   
   <div id="description" style="float : cneter">
-      <div>
+    <div>
       <center>
-           <h2>Catégories de produits</h2>
-            Tous nos produits sont classés en 3 catégories.<br/>
-            Cliquez sur l'une d'elles pour accéder à la page correspondante :
-          <br/>
-            <a href="ProduitFerraille.php">Ferraille ou trésors<br /></a>
-            <a href="ProduitMus%C3%A9e.php">Bon pour le musée<br /></a>
-            <a href="ProduitVIP.php">Accessoire VIP<br /></a>
-      </center>
-      <div>
-    <meta charset="utf-8">
+       <h2>Catégories de produits</h2>
+       Tous nos produits sont classés en 3 catégories.<br/>
+       Cliquez sur l'une d'elles pour accéder à la page correspondante :
+       <br/>
+       <a href="ProduitFerraille.php">Ferraille ou trésors<br /></a>
+       <a href="ProduitMus%C3%A9e.php">Bon pour le musée<br /></a>
+       <a href="ProduitVIP.php">Accessoire VIP<br /></a>
+     </center>
+     <div>
+      <meta charset="utf-8">
 
-    <div id="derniersobj">
-      <center>
-      <div>
+      <div id="derniersobj">
+        <center>
+          <div>
 
-        <form method="GET">
-          <br/>
-          <input type="search" name="q" placeholder="ECEbay Search.." />
-          <input type="submit" value="Rechercher" />
-        </form>
-      </div>
-    </center>
+            <form method="GET">
+              <br/>
+              <input type="search" name="q" placeholder="ECEbay Search.." />
+              <input type="submit" value="Rechercher" />
+            </form>
+          </div>
+        </center>
 
-      <?php 
-      $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
-      $objets = $bdd->query('SELECT Nom FROM objets ORDER BY ID DESC');
+        <?php 
+        $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
+        $objets = $bdd->query('SELECT Nom FROM objets ORDER BY ID DESC');
         if(!empty($_GET['q'])) {
           ?>
           <br/>
           <center>
-          <h3><b>Résultat de votre recherche</b></h3>
+            <h3><b>Résultat de votre recherche</b></h3>
           </center>
           <br/>
           <?php 
           $q = htmlspecialchars($_GET['q']);
           $objets = $bdd->query('SELECT ID,Nom, Photo1_nom, Photo1_extension, Prix, Description FROM objets WHERE Nom LIKE "%'.$q.'%" ORDER BY ID DESC');
+          $r=$objets->rowCount();
+          $i=0;
+          ?><center><table><?php
           while ($data = $objets->fetch()){
+            if($i%2==0){
+              ?><tr><?php
+            }
+            ?><td><?php
             echo '<div id="objet">
             <center>
             <h3><b>'.$data['Nom'].'</b></h3>
@@ -146,18 +153,27 @@ if(isset($_SESSION['ID'])){
             <h3><b>'.$data['Prix'].' €</b><a href="Favoris.php"><img src="../Images/coeur.png" height=35 width=65></a></h3>            
             </center>
             </div>
+            </td>
             <br/>
             ';
+            $i++;
+            if($i%2==0){
+              ?></tr><?php
+            }
+            if($i%2!=0 && $i==$r){
+              ?></tr><?php
+            }
           }
+          ?></table></center><?php
         }else if(isset($_GET['q']) && !empty($_GET['q'])){ ?>
           <p style="color:#FF0000";>Aucun résultat pour votre recherche comprenant : <?= $q ?>..</p>    
         <?php } ?>
+      </div>
     </div>
-  </div>
     <br /><br /><br /><br /><br />
-<div id="footer">
-  Copyright &copy; 2020; 
-  Clément Viéville - Hugo Teinturier - Kenny Huber
-</div>
-</body>
-</html>
+    <div id="footer">
+      Copyright &copy; 2020; 
+      Clément Viéville - Hugo Teinturier - Kenny Huber
+    </div>
+  </body>
+  </html>
