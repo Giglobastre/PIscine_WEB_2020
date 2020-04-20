@@ -48,6 +48,8 @@ $idtransac=0;
 
 			<?php
 			$condition=0;
+			$nvprix=0;
+			$nvnom=0;
 			$bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
 			$req = $bdd->prepare("SELECT ID,Prix,Nom FROM objets WHERE ID='".$ID_Objet."'");
 
@@ -61,6 +63,8 @@ $idtransac=0;
 					{
 						$condition=1;
 						$idtransac=$data['ID_transac'];
+						$nvprix=($data2['Prix']*3);
+						$nvnom=($data2['Nom']);
 					}
 				}
 				$req2->closeCursor();;
@@ -78,12 +82,13 @@ $idtransac=0;
 
 				else
 				{
-					$req5 = $bdd->prepare("UPDATE panier SET Acquereur= 3 WHERE ID_transac='".$idtransac."'"); 
+					echo("gello");
+					$req5 = $bdd->prepare("UPDATE panier SET Acquereur=3,Nom='".$nvnom."', Prix_max='".$nvprix."' WHERE ID_transac='".$idtransac."'");
 					$req5->execute();
 					$req5->closeCursor();;
 				}
 			}
-header('location: ../Pages/panier.php');
+header('location: ../Pages/panier.php');	
 			$req->closeCursor();;?>
 		</table>
 

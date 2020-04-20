@@ -99,13 +99,14 @@ try{
 				}
 				else
 				{
-					echo("il ya deja une offre plus eleve");
+					
+					header("il ya deja une offre plus eleve");
 				}
 
 			}
 			else
 			{
-				echo("lll");
+				header('location: ../Pages/objet.php');
 
 			}
 
