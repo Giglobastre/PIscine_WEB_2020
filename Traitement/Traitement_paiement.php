@@ -37,10 +37,10 @@ try{
 					$req15->closeCursor();
 				}
 
-
 				$req5 = $bdd->prepare("UPDATE panier SET Acquereur= 4 WHERE Acquereur=3 AND ID_Client='".$_SESSION['ID']."'" );
 				$req5->execute();
 				$req5->closeCursor();;
+                header('location: ../Pages/MailConfirmation.php');
 			}
 			
 
