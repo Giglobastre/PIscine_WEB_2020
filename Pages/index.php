@@ -55,19 +55,19 @@ if(isset($_SESSION['ID'])){
       <a href="about.php">A propos d'ECEbay</a>
       <?php if(isset($_SESSION['type']) && $_SESSION['type']==1){ ?>
         <a href="nv_obj.php">Mettre en vente un objet</a>
-        <?php } ?>
-      </div>
-      <div style="float:right" id="boutons">
-        <?php
-        if(isset($_SESSION['ID'])){
-          ?>
-          <form method="post" action="../Traitement/Traitement_deco.php">
-            <input type="submit" name="submit_ach" value="Deconnexion">
-          </form>
-          <?php
-        }
+      <?php } ?>
+    </div>
+    <div style="float:right" id="boutons">
+      <?php
+      if(isset($_SESSION['ID'])){
         ?>
+        <form method="post" action="../Traitement/Traitement_deco.php">
+          <input type="submit" name="submit_ach" value="Deconnexion">
+        </form>
         <?php
+      }
+      ?>
+      <?php
       if(isset($_SESSION['ID']) && $_SESSION['type']==0 && $_SESSION['admin']==0){//ach
         ?>
         <?php if(isset($PP)) { ?>
@@ -105,78 +105,75 @@ if(isset($_SESSION['ID'])){
     </marquee>
   </div>
 
-  <div  style="padding-left:430px">
-    <meta charset="utf-8">
-
-    <div id="derniersobj">
-      <div  style="padding-left:200px">
-
+  <div class="derniersobj">
+    <center>
+      <div>
         <form method="GET">
           <br/>
           <input type="search" name="q" placeholder="ECEbay Search.." />
           <input type="submit" value="Rechercher" />
         </form>
       </div>
+    </center>
 
+    <?php 
+    $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
+    $objets = $bdd->query('SELECT Nom FROM objets ORDER BY ID DESC');
+    if(!empty($_GET['q'])) {
+      ?>
+      <br/>
+      <center><h3><b>Résultat de votre recherche</b></h3></center>
+      <br/>
       <?php 
-      $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
-      $objets = $bdd->query('SELECT Nom FROM objets ORDER BY ID DESC');
-      if(!empty($_GET['q'])) {
-        ?>
-        <br/>
-        <h3><b>Résultat de votre recherche</b></h3>
-        <br/>
-        <?php 
-        $q = htmlspecialchars($_GET['q']);
-        $objets = $bdd->query('SELECT ID,Nom, Photo1_nom, Photo1_extension, Prix, Description FROM objets WHERE Nom LIKE "%'.$q.'%" ORDER BY ID DESC');
+      $q = htmlspecialchars($_GET['q']);
+      $objets = $bdd->query('SELECT ID,Nom, Photo1_nom, Photo1_extension, Prix, Description FROM objets WHERE Nom LIKE "%'.$q.'%" ORDER BY ID DESC');
 
-        ?><div id="derniersobj"><?php
-        $r=$objets->rowCount();
-        $i=0;
-        ?><center><table><?php
-        while ($data = $objets->fetch()){
-          if($i%2==0){
-            ?><tr><?php
-          }
-          ?><td><?php
-          echo '
-          <center>
-          <h3><b>'.$data['Nom'].'</b></h3>
-          <form method="post" action="objet.php">
-          <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
-          <input type="image" height=200 src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"/>
-          </form>
-          <form method="post" action="../Traitement/Traitement_favoris.php">
-          <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
-          <p><span style="border: 1px solid grey;" id="Description">'.$data['Description'].'</span></span></p>
-          <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
-          </form>        
-          </center>
-          </td>
-          ';
-          $i++;
-          if($i%2==0){
-            ?></tr><?php
-          }
-          if($i%2!=0 && $i==$r){
-            ?></tr><?php
-          }
+      $r=$objets->rowCount();
+      $i=0;
+      ?><center><table><?php
+      while ($data = $objets->fetch()){
+        if($i%2==0){
+          ?><tr><?php
         }
-        ?></table></center><?php
+        ?><td><?php
+        echo '<div id="objet">
+        <center>
+        <h3><b>'.$data['Nom'].'</b></h3>
+        <form method="post" action="objet.php">
+        <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+        <input type="image" height=200 src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"/>
+        </form>
+        <form method="post" action="../Traitement/Traitement_favoris.php">
+        <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+        <p><span style="border: 1px solid grey;" id="Description">'.$data['Description'].'</span></span></p>
+        <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
+        </form>        
+        </center>
+        </div>
+        </td>
+        ';
+        $i++;
+        if($i%2==0){
+          ?></tr><?php
+        }
+        if($i%2!=0 && $i==$r){
+          ?></tr><?php
+        }
       }
+      ?></table></center><?php
+    }
 
       //}
-      else if(isset($_GET['q']) && !empty($_GET['q'])){ ?>
-        <p style="color:#FF0000";>Aucun résultat pour votre recherche comprenant : <?= $q ?>..</p>    
-      <?php } ?>
-    </div>
+    else if(isset($_GET['q']) && !empty($_GET['q'])){ ?>
+      <center><p style="color:#FF0000";>Aucun résultat pour votre recherche comprenant : <?= $q ?>..</p></center>
+    <?php } ?>
   </div>
 
   <div>
     <div>
       <?php if(isset($_SESSION['ID'])){ ?>
-      <h2><b>Suggestions</b></h2>
-    <?php } ?>
+        <center><h2><b>Suggestions</b></h2></center>
+      <?php } ?>
     </div>
 
     <?php
@@ -188,56 +185,56 @@ if(isset($_SESSION['ID'])){
     }
     //requete pour recuperer le type dernier vu
     if(isset($_SESSION['ID'])){
-    $req100=$bdd->prepare('SELECT Type_derniervu FROM utilisateurs WHERE ID="'.$_SESSION['ID'].'"');
-    $req100->execute();
-    while ($data100 = $req100->fetch()){
-      $Catégorie=$data100['Type_derniervu'];
-    }
-    $req = $bdd->prepare('SELECT ID,Nom, Photo1_nom, Photo1_extension, Prix, Description FROM objets WHERE Catégorie="'.$Catégorie.'" ORDER BY ID DESC LIMIT 10'); 
-    $req->execute();
-    ?><div id="derniersobj"><?php
+      $req100=$bdd->prepare('SELECT Type_derniervu FROM utilisateurs WHERE ID="'.$_SESSION['ID'].'"');
+      $req100->execute();
+      while ($data100 = $req100->fetch()){
+        $Catégorie=$data100['Type_derniervu'];
+      }
+      $req = $bdd->prepare('SELECT ID,Nom, Photo1_nom, Photo1_extension, Prix, Description FROM objets WHERE Catégorie="'.$Catégorie.'" ORDER BY ID DESC LIMIT 10'); 
+      $req->execute();
+      ?><div class="derniersobj"><?php
   //$r=mysqli_num_rows($req);
-    $r=$req->rowCount();
-    $i=0;
-    ?><center><table><?php
-    while ($data = $req->fetch()){
-      if($i%2==0){
-        ?><tr><?php
+      $r=$req->rowCount();
+      $i=0;
+      ?><center><table><?php
+      while ($data = $req->fetch()){
+        if($i%2==0){
+          ?><tr><?php
+        }
+        ?><td><?php
+        echo '<div id="objet">
+        <center>
+        <h3><b>'.$data['Nom'].'</b></h3>
+        <form method="post" action="objet.php">
+        <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+        <input type="image" height=200 src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"/>
+        </form>
+        <form method="post" action="../Traitement/Traitement_favoris.php">
+        <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
+        <p><span style="border: 1px solid grey;" id="Description">'.$data['Description'].'</span></span></p>
+        <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
+        </form>        
+        </center>
+        </div>
+        </td>
+        ';
+        $i++;
+        if($i%2==0){
+          ?></tr><?php
+        }
+        if($i%2!=0 && $i==$r){
+          ?></tr><?php
+        }
       }
-      ?><td><?php
-      echo '<div id="objet">
-      <center>
-      <h3><b>'.$data['Nom'].'</b></h3>
-      <form method="post" action="objet.php">
-      <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
-      <input type="image" height=200 src="../Objets/'.$data['Photo1_nom'].'.'.$data['Photo1_extension'].'"/>
-      </form>
-      <form method="post" action="../Traitement/Traitement_favoris.php">
-      <input type="hidden" name="ID_obj" value="'.$data['ID'].'"/>
-      <p><span style="border: 1px solid grey;" id="Description">'.$data['Description'].'</span></span></p>
-      <h3><b>'.$data['Prix'].' €</b><input type="image" height=35 width=65 src="../Images/coeur.png"/></h3> 
-      </form>        
-      </center>
-      </div>
-      </td>
-      ';
-      $i++;
-      if($i%2==0){
-        ?></tr><?php
-      }
-      if($i%2!=0 && $i==$r){
-        ?></tr><?php
-      }
+      ?></table></center><?php
+      $req100->closeCursor();
     }
-    ?></table></center><?php
-    $req100->closeCursor();
-  }
     ?>
   </div>
 
   <div>
     <div>
-      <h2><b>Objets récements publiés</b></h2>
+      <center><h2><b>Objets récements publiés</b></h2></center>
     </div>
 
     <?php
@@ -249,7 +246,7 @@ if(isset($_SESSION['ID'])){
     }
   $req = $bdd->prepare('SELECT ID,Nom, Photo1_nom, Photo1_extension, Prix, Description FROM objets ORDER BY ID DESC LIMIT 10'); //ajouter LIMIT poour en prendre qu'un certain nombre & order bypour que ce soit les dernieres
   $req->execute();
-  ?><div id="derniersobj"><?php
+  ?><div class="derniersobj"><?php
   //$r=mysqli_num_rows($req);
   $r=$req->rowCount();
   $i=0;

@@ -106,11 +106,12 @@ if(isset($_SESSION['ID'])){
             <a href="ProduitMus%C3%A9e.php">Bon pour le musée<br /></a>
             <a href="ProduitVIP.php">Accessoire VIP<br /></a>
       </center>
-      <div  style="padding-left:430px">
+      <div>
     <meta charset="utf-8">
 
     <div id="derniersobj">
-      <div  style="padding-left:200px">
+      <center>
+      <div>
 
         <form method="GET">
           <br/>
@@ -118,6 +119,7 @@ if(isset($_SESSION['ID'])){
           <input type="submit" value="Rechercher" />
         </form>
       </div>
+    </center>
 
       <?php 
       $bdd = new PDO('mysql:host=localhost;dbname=pj_web2020;charset=utf8', 'root', '');
@@ -125,7 +127,9 @@ if(isset($_SESSION['ID'])){
         if(!empty($_GET['q'])) {
           ?>
           <br/>
+          <center>
           <h3><b>Résultat de votre recherche</b></h3>
+          </center>
           <br/>
           <?php 
           $q = htmlspecialchars($_GET['q']);
