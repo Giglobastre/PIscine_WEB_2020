@@ -76,7 +76,6 @@ if((empty($_POST['mail2'])==false)&&(empty($_POST['mdp1'])==false))
 
 elseif((empty($_POST['mail'])==false)&&(empty($_POST['nom'])==false)&&(empty($_POST['prenom'])==false)&&(empty($_POST['mdp'])==false)&&(empty($_POST['mdp2'])==false)&&(empty($_POST['pseudo'])==false))
 {
-	echo("huuuh");
 	$mail=$_POST['mail'];
 	$mdp=$_POST['mdp'];
 	$mdp2=$_POST['mdp2'];
@@ -104,7 +103,7 @@ elseif((empty($_POST['mail'])==false)&&(empty($_POST['nom'])==false)&&(empty($_P
 			
 		}
 
-		if($condition==0 && $mdp==$mdp2)
+		if($condition==0 && $mdp==$mdp2 && strpos($mail,'@edu.ece.fr')!==false)
 		{
 			$req = $bdd->prepare('INSERT INTO utilisateurs(Nom,Prenom,Pseudo,Mail,MDP,Type) VALUES(?,?,?,?,?,?)');
 			$req->execute(array($nom,$prenom,$pseudo,$mail,$mdp,$_SESSION['type']));
